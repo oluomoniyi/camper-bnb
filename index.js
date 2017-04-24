@@ -101,56 +101,8 @@ app.post("/campgrounds", function (req,res){//Create route
     } 
 })
 
-app.listen(port, function () {
-  console.log('Example app listening on port 3000!');
-})
-
-//app.listen(process.env.3000, process.env.IP);
-
-
-// app.post("/campgrounds", function (req,res){//post campgrounds
-//     //get data from from and add to array, redirect to page
-//     var name = req.body.name
-//     var image = req.body.image
-//     var description = req.body.description
-//     var location = req.body.location
-
-//     var search = req.body.search
-
-//     if (name && image){
-//         Campground.create({
-//             name,
-//             image,
-//             description,
-//             location
-//             }, function (err, campground){
-//             if (err){
-//                 console.log(err)
-//             }
-//             else{
-//                 console.log("new camp")
-//                 console.log(campground)
-//             }
-//         })
-//     }
-//     else {
-//         if (search){
-//             Campground.find({name: new RegExp(search, 'i')}, function(err, campgrounds){
-//                 if (err){
-//                     console.log(err)
-//                 }
-//                 else{
-//                     if (campgrounds){
-//                         res.render("index", {campgrounds})
-//                     }
-//                     else {
-//                         res.render("index", {campgrounds})
-//                     }
-//                 }
-//             })
-//         }
-//     }
-//     //res.redirect("index")
+// app.listen(port, function () {
+//   console.log('Example app listening on port 3000!');
 // })
 
-
+app.listen(process.env.PORT, process.env.IP);

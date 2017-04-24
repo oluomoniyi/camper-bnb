@@ -30,6 +30,7 @@ function seedDB (){
             console.log(err)
         }
         console.log("removed")
+        //console.log(process.env.PORT, process.env.IP)
         //add
         data.forEach(function(seed){
             Campgrond.create(seed, function(err,campground){
