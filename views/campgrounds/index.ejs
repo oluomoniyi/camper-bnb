@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 <div class="container">
     <header class="jumbotron">
@@ -8,15 +8,20 @@
             <!--p>
                 <a class="btn btn-primary btn-large" href="/campgrounds/new">add new</a>
             </p-->
-             <form class="navbar-form navbar-left" action="/campgrounds" method="POST">
+        </div>
+    </header>
+    
+    <div class="row">
+        <div class="col-lg-12" style="width:80%; margin:auto">
+            <form action="/search" method="POST" style="">
                 <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search by Name" name="search" id="search" onfocusout="this.form.submit()" value="<%= search %>"/>
-                <button class="btn btn-primary btn-large" type="button" onclick="$('#search').val('');this.form.submit()" style="display:inline-block">Clear</button>
+                    <input type="text" class="form-control" placeholder="Search by Name" name="search" id="search" onfocusout="this.form.submit()" value="<%= search %>"/>
+                    <button class="btn btn-primary btn-large" type="button" onclick="$('#search').val('');this.form.submit()" style="display:inline-block">Clear</button>
                 </div>
                 <!--button type="submit" class="btn btn-default">Submit</button document.getElementById('search').value(search) -->
             </form>
         </div>
-    </header>
+    </div>
 
     <div class="row" style="display:flex; flex-wrap:wrap">
         <div class="col-lg-12">
@@ -43,4 +48,4 @@
 
 </div>
 
-<% include partials/footer %>
+<% include ../partials/footer %>

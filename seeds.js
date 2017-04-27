@@ -1,23 +1,23 @@
 var mongoose = require("mongoose");
-var Campgrond = require("./models/campground")
-var Comment = require("./models/comments")
+var Campground = require("./models/campground")
+var Comment = require("./models/comment")
 
 var data = [
     {
         name:"Clouds Rest", 
-        image:"https://unsplash.com/?photo=ixHfyjA49M8",
+        image:"http://static2.businessinsider.com/image/542d7fbbecad044e5b9a74f6-1190-625/7-incredible-pictures-of-kids-turning-a-war-zone-into-a-playground.jpg",
         description:"Clouds Rest Locations",
-        location:"Lagos"
+        location:"Palestine"
     },
     {
         name:"Mountain View", 
-        image:"https://unsplash.com/?photo=DgEA7saT8FQ",
+        image:"http://www.lense.fr/wp-content/uploads/2014/10/gaza-parkour-3.jpg",
         description:"Clouds Rest Locations",
         location:"Longo"
     },
     {
         name:"Hill View", 
-        image:"https://unsplash.com/?photo=UO02gAW3c0c",
+        image:"http://static4.businessinsider.com/image/542d7a6069bedddc31e84a68-800-/gaza-parkour.jpg",
         description:"Hill Rest Locations",
         location:"London"
     }
@@ -25,31 +25,33 @@ var data = [
 
 function seedDB (){
     //remove all grounds
-    Campgrond.remove({}, function(err){
+    Campground.remove({}, function(err){
         if (err){
             console.log(err)
         }
         console.log("removed")
-        //console.log(process.env.PORT, process.env.IP)
-        //add
-        data.forEach(function(seed){
-            Campgrond.create(seed, function(err,campground){
+        data.forEach(function(seed){//add
+            Campground.create(seed, function(err,campground){
                 if (err){
                     console.log(err)
                 }
                 else {
                     console.log("added new campground")
+                     Comment.create(
+                        {
+                            text:"Comment",
+                            author: "me"
+                        }, function(err,comment){
+                            if (err){
+                                console.log(err)
+                            }else {
+                                campground.comments.push(comment)
+                                campground.save();
+                                console.log("new comment")
+                            }
+                    })
                 }
             })
-                //     Comment.create(
-                //         {
-                //         text:"Comment",
-                //         author: "me"
-                //         }, function(err,cmt){
-
-                //         })
-                //     )
-                // }
         })
     })
 }
