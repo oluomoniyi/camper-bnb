@@ -1,7 +1,8 @@
 <h1>These are all the comments for  </h1>
+<% if (comments.length > 0){ %>
 <% comments.forEach(function(comment){ %>
 <p>
     <%= comment.text %> - <%= comment.author %>
 </p>
 <% }) %>
-
+<% } %>
