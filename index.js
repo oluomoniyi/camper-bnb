@@ -17,11 +17,12 @@ app.use(express.static(__dirname + "/public"))
 
 //seedDB();
 
+//INITIAL ROUTE
 app.get("/", function (req,res){// GET ROUTE
     res.redirect("campgrounds")
 })
 
-// GET ROUTE
+//GET ROUTE
 app.get("/campgrounds", function(req,res){
         Campground.find({}, function(err, campgrounds){
             if (err){
@@ -57,7 +58,7 @@ app.get("/search", function (req,res){
     }
 })
 
-// NEW ROUTE
+//NEW ROUTE
 app.get("/campgrounds/new", function (req,res){
     res.render("campgrounds/new");// template redirects user to the post route, to add new item
 })
