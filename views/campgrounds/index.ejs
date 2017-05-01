@@ -1,39 +1,49 @@
 <% include ../partials/header %>
 
-<div class="container">
-    <header class="jumbotron">
-        <div class="container">
-            <h1>Welcome to YelpCamp</h1>
-            <p> View our handpicked camp grounds</p>
-            <!--p>
-                <a class="btn btn-primary btn-large" href="/campgrounds/new">add new</a>
-            </p-->
-        </div>
-    </header>
-    
-    <div class="row">
-        <div class="col-lg-12" style="width:80%; margin:auto">
-            <% include ../partials/searchform %>
-        </div>
-    </div>
-
-    <div class="row" style="display:flex; flex-wrap:wrap">
-        <div class="col-lg-12">
-                <% campgrounds.forEach(function(campground){ %>
-                <div class="col-md-6 col-sm-6 col-lg-4">
-                    <div class="thumbnail">
-                        <a href="/campgrounds/<%= campground.id %>">
-                            <img src="<%= campground.image %>" alt="<%= campground.name %>"/>
-                            <div class="caption">
-                                <h4><%= campground.name %></h4>
-                            </div>
-                        </a>
+<div class="section section-header presentation">
+        <div class="parallax filter filter-color-red">
+            <div class="image"
+                style="background-image: url('assets/img/header-1.jpeg')">
+            </div>
+            <div class="container">
+                <div class="content">
+                    <div class="title-area">
+                        <p>Tiny Head</p>
+                        <h1 class="title-modern">Main Head</h1>
+                        <h3>h3</h3>
+                        <div class="separator line-separator">♦</div>
                     </div>
+                    <% include ../partials/searchform %>
                 </div>
-            <% }) %>
+
+            </div>
         </div>
     </div>
 
-</div>
+     <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="title-area">
+                    <h2>Our Services</h2>
+                    <div class="separator separator-danger">✻</div>
+                    <p class="description">We promise you a new look and more importantly, a new attitude. We build that by getting to know you, your needs and creating the best looking clothes.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <% campgrounds.forEach(function(campground){ %>
+                    <div class="col-md-4">
+                        <div class="info-icon thumbnail">
+                            <a href="/campgrounds/<%= campground.id %>">
+                                <img src="<%= campground.image %>" alt="<%= campground.name %>"/>
+                                <h3><%= campground.name %></h3>
+                                <p class="description"><%= campground.description %></p>
+                            </a>
+                        </div>
+                    </div>
+                <% }) %> 
+            </div>
+        </div>
+    </div>
 
 <% include ../partials/footer %>
