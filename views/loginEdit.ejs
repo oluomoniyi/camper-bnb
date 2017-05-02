@@ -1,0 +1,31 @@
+<%include ./partials/header %>
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <%include ./partials/sidebar %>
+                <div class="title-area">
+                    <h2>Edit Your Profile</h2>
+                    <div class="separator separator-danger">✻</div>
+                    <form action="/users/update/<%= currentUser._id %>" method="POST" style="">
+                        <div class="form-group">
+                            <svg data-jdenticon-hash="<%= currentUser.id %>"></svg>
+                            <label for="search">Firstname</label>
+                            <input type="text" class="form-control" placeholder="firstname" name="firstname" id="firstname" value="<%= currentUser.firstname %>">
+                            <label for="search">Suranme</label>
+                            <input type="text" class="form-control" placeholder="surname" name="surname" id="surname" value="<%= currentUser.surname %>">
+                            <label for="search">Email</label>
+                            <input type="text" class="form-control" placeholder="email" name="email" id="email" value="<%= currentUser.email %>">
+                            <label for="search">Username</label>
+                            <input type="text" class="form-control" placeholder="username" name="username" id="username" value="<%= currentUser.username %>">
+                            <label for="search">Password</label>
+                            <input type="password" class="form-control" placeholder="password" name="password" id="password" value="<%= currentUser.password %>">
+                            <button class="btn btn-primary btn-large button-get-started" style="display:inline-block" value="login">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<% include ./partials/footer %>

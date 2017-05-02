@@ -5,6 +5,7 @@ var express = require("express"),
         mongoose = require("mongoose"),//.set('debug', true),debugging is extremely useful in development
         passport = require("passport"),
         LocalStrategy = require("passport-local"),
+        Session = require("express-session")
         Campground = require("./models/campground"),
         seedDB = require("./seeds"),
         User = require("./models/user"),
@@ -22,11 +23,16 @@ app.use(express.static(__dirname + "/public"))
 //seedDB();
 
 //passport config
-app.use(require("express-session")({
+app.use(Session({
     secret: "UULUQdm2ktLsKNLhRYEz5Bff",
     resave: false,
-    saveUninitialized:false
+    saveUninitialized:false,
+    cookie : {
+        expires: false,
+        domain: config.cookie.domain
+    }
 }))
+
 app.use(passport.initialize())
 app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
@@ -41,19 +47,14 @@ app.use(function(req,res,next){
 
 //INITIAL ROUTE
 app.get("/", function (req,res){// GET ROUTE
-    res.redirect("campgrounds")
-})
-
-//GET ROUTE
-app.get("/campgrounds", function(req,res){
-        Campground.find({}, function(err, campgrounds){
-            if (err){
-                console.log(err)
-            }
-            else{
-                res.render("campgrounds/index", {campgrounds})
-            }
-        })
+    Campground.find({}, function(err, campgrounds){
+        if (err){
+            console.log(err)
+        }
+        else{
+            res.render("campgrounds/index", {campgrounds})
+        }
+    })
 })
 
 //SEARCH POST ROUTE
@@ -80,10 +81,67 @@ app.get("/search", function (req,res){
     }
 })
 
+//GET ROUTE
+app.get("/campgrounds", function(req,res){
+    var userid = req.user._id
+    Campground.find({userid}, function(err, campgrounds){
+        if (err){
+            console.log(err)
+        }
+        else{
+            res.render("campgrounds/index", {campgrounds})
+        }
+    })
+})
+
 //NEW ROUTE
 app.get("/campgrounds/new", isLoggedIn, function (req,res){
     res.render("campgrounds/new");// template redirects user to the post route, to add new item
 })
+
+//EDIT ROUTES
+app.get("/campgrounds/:id/edit", function(res,req){
+    console.log(req.user)
+    var userid = req.user._id
+    if (req.params.id == userid){ 
+        Campground.find({userid}, function(err, campground){
+            if (err){
+                console.log(err)
+            }
+            else{
+                res.render("campgrounds/edit", {campground})
+            }
+        })
+    }
+    else {
+        res.send("access denied")
+    }
+})
+
+app.post("/campgrounds/:id/update", function(res,req){
+    var name = req.body.name
+    var image = req.body.image
+    var description = req.body.description
+    var location = req.body.location
+    var userid = req.user._id
+
+	Campground.update({
+		name,
+		image,
+		description,
+        userid,
+		location
+		}, function (err, campground){
+		if (err){
+			console.log(err)
+		}
+		else{
+			console.log(campground)
+		}
+	})
+	res.redirect("/campgrounds"+userid)
+})
+//EDIT ROUTES
 
 //CREATE ROUTE
 app.post("/campgrounds", isLoggedIn, function (req,res){
@@ -91,11 +149,13 @@ app.post("/campgrounds", isLoggedIn, function (req,res){
     var image = req.body.image
     var description = req.body.description
     var location = req.body.location
+    var userid = req.user._id
 
 	Campground.create({
 		name,
 		image,
 		description,
+        userid,
 		location
 		}, function (err, campground){
 		if (err){
@@ -191,11 +251,6 @@ app.post("/register", function(req,res){
     var surname = req.body.surname
     var email = req.body.email
 
-    // User.create({
-    //     firstname,
-    //     surname,
-    //     email
-    // }), 
     User.register(newUser, password, function(err, user){
         if (err){
             console.log(err);
@@ -205,6 +260,10 @@ app.post("/register", function(req,res){
                 res.redirect("/")
             })
         }
+    }), User.create({
+        firstname,
+        surname,
+        email
     })
 })
 
@@ -232,12 +291,36 @@ function isLoggedIn(req,res,next){
     res.redirect("/login")
 }
 
+//users routes
+app.get("/users/edit", function(req,res){
+    res.render("loginEdit")
+})
+
+app.post("users/update/:id", function(req,res){
+    var userid = req.params.id
+    var username = req.session.passport.user
+    var newPass = req.body.password
+    console.log(username, userid)
+    User.findByUsername(username).then(function(sanitizedUser){
+    if (sanitizedUser){
+        sanitizedUser.setPassword(newPass, function(){
+            sanitizedUser.save();
+            res.send('password reset successful');
+        });
+    } else {
+        res.send('user does not exist');
+    }
+    },function(err){
+        console.error(err);
+    })
+})
+
 //AUTH ROUTES END
 
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log(process.env.PORT, process.env.IP, "running")
-});
+// app.listen(process.env.PORT, process.env.IP, function(){
+//     console.log(process.env.PORT, process.env.IP, "running")
+// });
 
-// app.listen(3000, function () {
-//   console.log('Example app listening on port 3000!');
-// })
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+})

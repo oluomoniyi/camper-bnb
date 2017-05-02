@@ -6,6 +6,7 @@ var campgroundSchema = new mongoose.Schema({
     image: String,
     description: String, 
     location: String,
+    userid: String,
     comments: [
         {
             type: mongoose.Schema.Types.ObjectId,

@@ -12,8 +12,45 @@
  
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
-.user-name{display: block;}
- 
+.user-name{display: block;}.user-name{display: block;}
+
+i.search-label{
+  display: inline;
+  font-size:25px;
+}
+.search-form .search-input{
+    background-color: #fafafa;
+    border-width: 3px 3px 3px 0;
+    border-style: solid;
+    border-color: #f2f2f2!important;
+    border-radius: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    outline: none;
+    padding: 14px 14px 14px 0;
+    width: 80%;
+    -webkit-appearance: none;
+}
+
+.presentation .parallax {
+    height: 75vh!important;
+}
+.icon-black, .icon-white{
+    display:none;
+}
+.navbar.navbar-default.navbar-fixed-top .navbar-brand{padding:0px;}
+.navbar.navbar-default.navbar-fixed-top .icon-black{
+  display:block;
+}
+.navbar.navbar-default.navbar-fixed-top .icon-white{
+  display:none;
+}
+.navbar.navbar-default.navbar-fixed-top.navbar-transparent .icon-white{
+  display:block;
+}
+.navbar.navbar-default.navbar-fixed-top.navbar-transparent .icon-black{
+  display:none;
+} 
 /*      light colors         */
 html {
   font-size: 14px;
