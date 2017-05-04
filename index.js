@@ -5,7 +5,7 @@ var express = require("express"),
         mongoose = require("mongoose"),//.set('debug', true),debugging is extremely useful in development
         passport = require("passport"),
         LocalStrategy = require("passport-local"),
-        Session = require("express-session")
+        Session = require("express-session"),
         Campground = require("./models/campground"),
         seedDB = require("./seeds"),
         User = require("./models/user"),
@@ -27,10 +27,6 @@ app.use(Session({
     secret: "UULUQdm2ktLsKNLhRYEz5Bff",
     resave: false,
     saveUninitialized:false,
-    cookie : {
-        expires: false,
-        domain: config.cookie.domain
-    }
 }))
 
 app.use(passport.initialize())
@@ -47,7 +43,8 @@ app.use(function(req,res,next){
 
 //INITIAL ROUTE
 app.get("/", function (req,res){// GET ROUTE
-    Campground.find({}, function(err, campgrounds){
+    //Campground.find({}, function(err, campgrounds){
+        Campground.find({}).populate("comments").exec(function(err, campgrounds){
         if (err){
             console.log(err)
         }
@@ -89,7 +86,7 @@ app.get("/campgrounds", function(req,res){
             console.log(err)
         }
         else{
-            res.render("campgrounds/index", {campgrounds})
+            res.render("campgrounds/campgrounds", {campgrounds})
         }
     })
 })
@@ -100,38 +97,40 @@ app.get("/campgrounds/new", isLoggedIn, function (req,res){
 })
 
 //EDIT ROUTES
-app.get("/campgrounds/:id/edit", function(res,req){
-    console.log(req.user)
-    var userid = req.user._id
-    if (req.params.id == userid){ 
-        Campground.find({userid}, function(err, campground){
+app.get("/campgrounds/:id/edit", function (req,res){
+    console.log(req.user, req.params.id)
+    //var userid = req.user._id
+    //if (req.params.id == userid){ 
+    if (1==1){
+        Campground.findById(req.params.id, function(err, campgrounds){
             if (err){
                 console.log(err)
             }
             else{
-                res.render("campgrounds/edit", {campground})
+                res.render("campgrounds/edit", {campgrounds})
+                console.log(campgrounds)
             }
         })
     }
     else {
         res.send("access denied")
-    }
+   }
 })
 
+//secure me llater
 app.post("/campgrounds/:id/update", function(res,req){
     var name = req.body.name
     var image = req.body.image
     var description = req.body.description
     var location = req.body.location
-    var userid = req.user._id
+    var campgroundId = req.params.id
 
-	Campground.update({
+	Campground.update({_id: campgroundId}, {'$set': {
 		name,
 		image,
 		description,
-        userid,
 		location
-		}, function (err, campground){
+		}}, function (err, campground){
 		if (err){
 			console.log(err)
 		}
@@ -139,7 +138,7 @@ app.post("/campgrounds/:id/update", function(res,req){
 			console.log(campground)
 		}
 	})
-	res.redirect("/campgrounds"+userid)
+	res.redirect("/campgrounds"+campgroundId)
 })
 //EDIT ROUTES
 
@@ -171,12 +170,12 @@ app.post("/campgrounds", isLoggedIn, function (req,res){
 //SHOW route
 app.get("/campgrounds/:id", function(req,res){
     var id = req.params.id
-    Campground.findById(id).populate("comments").exec(function(err, foundCampground){
+    Campground.findById(id).populate("comments").exec(function(err, campground){
         if (err){
             console.log(err)
         }
         else {
-            res.render("campgrounds/show", {campground: foundCampground})
+            res.render("campgrounds/show", {campground})
         }
     })
 })
@@ -317,10 +316,10 @@ app.post("users/update/:id", function(req,res){
 
 //AUTH ROUTES END
 
-// app.listen(process.env.PORT, process.env.IP, function(){
-//     console.log(process.env.PORT, process.env.IP, "running")
-// });
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log(process.env.PORT, process.env.IP, "running")
+});
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-})
+// app.listen(3000, function () {
+//   console.log('Example app listening on port 3000!');
+// })
