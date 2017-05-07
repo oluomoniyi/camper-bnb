@@ -18,6 +18,18 @@
   display: inline;
   font-size:25px;
 }
+.form-group{
+  max-width: 500px;
+  margin:auto;
+}
+.search-form{
+  max-width: none;
+}
+.post-image{
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    }
 .search-form .search-input{
     background-color: #fafafa;
     border-width: 3px 3px 3px 0;
@@ -216,9 +228,11 @@ body {
   /*-webkti-box-sizing: border-box;*/
   /*-moz-box-sizing: border-box;*/
   /*box-sizing: border-box;*/
-  /*float: left;*/
-  max-width:400px;
-  padding-bottom:20px
+  /*float: left;
+  max-width:400px;*/
+  padding-bottom:20px;
+  margin: auto;
+  background-repeat: no-repeat;
 }
 .card-container .column .demo-title {
   margin: 0 0 15px;

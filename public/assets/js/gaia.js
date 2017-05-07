@@ -158,15 +158,18 @@ gaia = {
     },
 
     checkScrollForTransparentNavbar: debounce(function() {
+        //$('.index.navbar').removeClass('navbar-transparent');
+            var navbarIndex = ('.index .navbar')
             if($(document).scrollTop() > scroll_distance ) {
                 if(transparent) {
                     transparent = false;
-                    $navbar.removeClass('navbar-transparent');
+                    //OLU add new fucntion
+                   // $('.index.navbar').removeClass('navbar-transparent');
                 }
             } else {
                 if( !transparent ) {
                     transparent = true;
-                    $navbar.addClass('navbar-transparent');
+                    //$('.index.navbar').addClass('navbar-transparent');
                 }
             }
     }, 17),

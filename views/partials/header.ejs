@@ -20,7 +20,7 @@
 
 <body>
 
-    <nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll="200">
+    <nav class="index navbar navbar-default navbar-fixed-top navbar-burger" color-on-scroll="200">
         <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
         <div class="container">
             <div class="navbar-header">
@@ -32,12 +32,12 @@
                 </button>
                 <a href="/" class="navbar-brand" style="max-width:80px;">
                     <img src="/assets/img/icon.png" alt="logo" width="100%" class="icon-white"/>
-                    <img src="/assets/img/icon-black.png" alt="logo" height="60px" class="icon-black" style="text-align:center;"/>
-                    <span style="text-align:center;padding-top:4px;display:inline-block;font-size:15px;width:100%">Yelpcamp</span>
+                    <img src="/assets/img/icon-black.png" alt="logo" height="40px" class="icon-black" style="text-align:center;"/>
+                    <span style="text-align:center;padding-top:4px;font-size:15px;width:100%" class="icon-white">Yelpcamp</span>
                 </a>
             </div>
             <div class="collapse navbar-collapse">
-                 <ul class="nav navbar-nav navbar-right navbar-uppercase">
+                 <ul class="nav navbar-nav navbar-right navbar-lowercase">
             <!--i class="fa fa-user-circle-o"></i-->
                 <% if (!currentUser){ %>
                     <li><a href="/login">Login</a></li>
@@ -46,20 +46,22 @@
                         <li><a href="/campgrounds/new">Add a new campground</a></li>
                         <li><a href="/campgrounds/">My Campgrounds</a></li>
                         <li><a href="/comments/">My Reviews</a></li>
-                        <li class="dropdown">
-                        <!--<a href="#gaia" class="dropdown-toggle btn btn-danger btn-fill" data-toggle="dropdown">-->
-                        <!--    <svg width="20" height="20" data-jdenticon-hash="<%= currentUser.id %>"></svg><span class="user-name"><%= currentUser.username %></span>-->
-                        <!--</a>-->
-                        <a href="#gaia" class="dropdown-toggle" data-toggle="dropdown">
-                            <svg width="28" height="28" data-jdenticon-hash="<%= currentUser.id %>" style="display:inline;border-radius:50%;background:#fff;"></svg>
+                        <li><a href="/users/edit">Edit user</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                        <!--li class="dropdown">
+                        <<a href="#gaia" class="dropdown-toggle btn btn-danger btn-fill" data-toggle="dropdown">
+                            <svg width="20" height="20" data-jdenticon-hash="<%= currentUser.id %>"></svg><span class="user-name"><%= currentUser.username %></span>>
+                        <</a>>
+                        <a href="#gaia" class="dropdown-toggle btn btn-danger btn-fill" data-toggle="dropdown">
+                            svg width="28" height="28" data-jdenticon-hash="<%= currentUser.id %>" style="display:inline;border-radius:50%;background:#fff;"></svg>
                             <span class="user-name"><%= currentUser.username %></span>
-                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <i class="fa fa-caret-down" aria-hidden="true"></>
                         </a>
                         <ul class="dropdown-menu dropdown-danger">
                             <li><a href="/users/edit">Edit user</a></li>
                             <li><a href="/logout">Logout</a></li>
                         </ul>
-                    </li>
+                    </li-->
                 <% } %>
             </ul>
             </div>
