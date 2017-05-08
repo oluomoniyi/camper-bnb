@@ -26,7 +26,28 @@
 				<% } %>
 			</p>
 			<div class="post-meta">
-				<span class="timestamp"><i class="fa fa-clock-">o</i> 6 mins ago</span><span class="comments"><i class="fa fa-comments"></i><span> 5 comments</span>
+				<!--span class="timestamp"><i class="fa fa-clock-">o</i> 6 mins ago</span><span class="comments"><i class="fa fa-comments"></i><span> 5 reviews</span-->
+				<span class="comments">
+				<!--round ratings-->
+					<% function round(value, step) { %>
+					<%	step || (step = 1.0); %>
+					<%	var inv = 1.0 / step; %>
+					<%	return Math.round(value * inv) / inv; %>
+					<% } %>
+					<% function getRandomInt(min, max) { %>
+					<%  return Math.random() * (max - min + 1) + min; %>
+					<% } %>
+				<!--randomiser to be replaced with actual value-->
+					<% var value = round(getRandomInt(2.5, 5), 0.5); %>
+					<% for (var i =0; i < parseInt(value); i++){%>
+						<i class="fa fa-star" aria-hidden="true" style="color:#e78b90"></i>
+					<% } %>
+					<% var valueModulo = value % parseInt(value) %>
+					<% if (valueModulo > 0.5) { %>
+						<i class="fa fa-star-half" aria-hidden="true" style="color:#e78b90"></i> 
+					<% } %>
+					<%= Math.floor(getRandomInt(10, 100)) %> reviews
+				</span>
 			</div>
 		  </div>
 		</div>
