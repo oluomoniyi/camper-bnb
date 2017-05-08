@@ -37,7 +37,7 @@
                 </a>
             </div>
             <div class="collapse navbar-collapse">
-                 <ul class="nav navbar-nav navbar-right navbar-lowercase">
+                 <ul class="nav navbar-nav navbar-left navbar-lowercase">
             <!--i class="fa fa-user-circle-o"></i-->
                 <% if (!currentUser){ %>
                     <li><a href="/login">Login</a></li>
@@ -46,25 +46,12 @@
                         <li><a href="/campgrounds/new">Add a new campground</a></li>
                         <li><a href="/campgrounds/">My Campgrounds</a></li>
                         <li><a href="/comments/">My Reviews</a></li>
-                        <li><a href="/users/edit">Edit user</a></li>
+                        <li><a href="/users/<%=currentUser._id%>/edit">Edit user</a></li>
                         <li><a href="/logout">Logout</a></li>
-                        <!--li class="dropdown">
-                        <<a href="#gaia" class="dropdown-toggle btn btn-danger btn-fill" data-toggle="dropdown">
-                            <svg width="20" height="20" data-jdenticon-hash="<%= currentUser.id %>"></svg><span class="user-name"><%= currentUser.username %></span>>
-                        <</a>>
-                        <a href="#gaia" class="dropdown-toggle btn btn-danger btn-fill" data-toggle="dropdown">
-                            svg width="28" height="28" data-jdenticon-hash="<%= currentUser.id %>" style="display:inline;border-radius:50%;background:#fff;"></svg>
-                            <span class="user-name"><%= currentUser.username %></span>
-                            <i class="fa fa-caret-down" aria-hidden="true"></>
-                        </a>
-                        <ul class="dropdown-menu dropdown-danger">
-                            <li><a href="/users/edit">Edit user</a></li>
-                            <li><a href="/logout">Logout</a></li>
-                        </ul>
-                    </li-->
                 <% } %>
             </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
     </nav>
+    <div style="display:block; height:72px"></div><!--lazy padding-->

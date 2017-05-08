@@ -10,7 +10,7 @@ router.get("/", function (req,res){// GET ROUTE
             console.log(err)
         }
         else{
-            res.render("campgrounds/index", {campgrounds})
+            res.render("index", {campgrounds})
             //res.send({campgrounds})
         }
     })

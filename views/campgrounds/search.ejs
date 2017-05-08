@@ -1,33 +1,13 @@
 <% include ../partials/header %>
+<%include ../partials/banners/bannersearch %>
 
-<div class="container">
-    <header class="jumbotron">
-        <div class="container">
-            <h1>Search Results</h1>
-        </div>
-    </header>
-    
-    <div class="row" style="display:flex; flex-wrap:wrap">
-        <div class="col-lg-12">
-			<p><%= campgrounds.length %> properties for "<%= query %>"</p>
-			<% if (campgrounds.length > 0){ %>
-				<%= "please try searching with another name" %>
-			<%}%>
-			<p id="searchMessage"></p>
-			<% include ../partials/searchform %>
-			<% campgrounds.forEach(function(campground){ %>
-			<div class="col-md-6 col-sm-6 col-lg-4">
-				<div class="thumbnail">
-					<a href="/campgrounds/<%= campground.id %>">
-						<img src="<%= campground.image %>" alt="<%= campground.name %>"/>
-						<div class="caption">
-							<h4><%= campground.name %></h4>
-						</div>
-					</a>
-				</div>
-			</div>
-			<% }) %>
-        </div>
+<div class="section">
+	<div class="container">
+	    <div class="row" style="display:flex; flex-wrap:wrap">
+	        <div class="col-lg-12">
+				<% include ../partials/campground/cards %>
+	        </div>
+		</div>
 	</div>
 </div>
 

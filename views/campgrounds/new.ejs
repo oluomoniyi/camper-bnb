@@ -1,28 +1,30 @@
 <%include ../partials/header %>
 
-<div class="container">
-    <div class="row">
-        <h1 style="text-align:center">New Campground</h1>
-        <div style="margin:auto;width:30%;">
-            <form action="/campgrounds" method="POST">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="name" name="name"/>
-                </div>
-                <div class="form-group">
-                    <input type="url" class="form-control" name="image" placeholder="img"/>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" name="description" placeholder="description"></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="location" placeholder="location"/>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Add New</button>
-                </div>
-            </form>
-            <a href="/campgrounds">Go Back</a>
-        </div>    
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="column col-lg-6 col-sm-12 col">
+                <h2 class="title-modern">
+                    Hi <span class="user-name"><%= currentUser.username %></span>,
+                    <br/>Let us get you ready 
+                    <br/>to start listing campgrounds.
+                </h2>
+                <form action="/campgrounds" method="POST">
+                    <div class="form-group">
+                        <label for="name">Campground Name</label>
+                        <input type="text" class="form-control" placeholder="name" name="name"/>
+                        <label for="img">Supply an image URL from the web</label>
+                        <input type="url" class="form-control" name="image" placeholder="img"/>
+                        <label for="description">Describe the campground, in as much detail as you can</label>
+                        <textarea class="form-control" name="description" placeholder="description"></textarea>
+                        <label for="location">Where is it located? e.g London, UK</label>
+                        <input type="text" class="form-control" name="location" placeholder="location"/>
+                        <button class="btn btn-lg btn-danger btn-block btn-fill">Add new campground</button>
+                    </div>
+                </form>
+            </div> 
+            <%include ../partials/sidebars/image2.ejs %>
+        </div>
     </div>
 </div>
 

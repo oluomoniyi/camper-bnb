@@ -156,23 +156,23 @@ gaia = {
         }
 
     },
-
-    checkScrollForTransparentNavbar: debounce(function() {
-        //$('.index.navbar').removeClass('navbar-transparent');
-            var navbarIndex = ('.index .navbar')
-            if($(document).scrollTop() > scroll_distance ) {
-                if(transparent) {
-                    transparent = false;
-                    //OLU add new fucntion
-                   // $('.index.navbar').removeClass('navbar-transparent');
-                }
-            } else {
-                if( !transparent ) {
-                    transparent = true;
-                    //$('.index.navbar').addClass('navbar-transparent');
-                }
-            }
-    }, 17),
+    //OLU remove scroll navbar
+    // checkScrollForTransparentNavbar: debounce(function() {
+    //     //$('.index.navbar').removeClass('navbar-transparent');
+    //         var navbarIndex = ('.index .navbar')
+    //         if($(document).scrollTop() > scroll_distance ) {
+    //             if(transparent) {
+    //                 transparent = false;
+    //                 //OLU add new fucntion
+    //               // $('.index.navbar').removeClass('navbar-transparent');
+    //             }
+    //         } else {
+    //             if( !transparent ) {
+    //                 transparent = true;
+    //                 //$('.index.navbar').addClass('navbar-transparent');
+    //             }
+    //         }
+    // }, 17),
 
     checkScrollForParallax: debounce(function() {
         	$('.parallax').each(function() {

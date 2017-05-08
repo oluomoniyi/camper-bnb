@@ -7,11 +7,11 @@ var Campground = require("../models/campground")
 var User = require("../models/user")
 
 //users routes
-router.get("/users/edit", function(req,res){
+router.get("/users/:id/edit", function(req,res){
     res.render("loginEdit")
 })
-
-router.post("users/update/:id", function(req,res){
+//update
+router.put("users/:id", function(req,res){
     var userid = req.params.id
     var username = req.session.passport.user
     var newPass = req.body.password
@@ -30,7 +30,6 @@ router.post("users/update/:id", function(req,res){
     })
 })
 
-//AUTH ROUTES
 router.get("/register", function(req,res){
     res.render("register")
 })

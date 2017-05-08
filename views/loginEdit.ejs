@@ -3,13 +3,12 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <%include ./partials/sidebar %>
-                <div class="title-area">
-                    <h2>Edit Your Profile</h2>
+                <%include ./partials/sidebars/userimage %>
+                <div class="column col-lg-6 col-sm-12 col">
+                    <h2 class="title-modern">Hi <span class="user-name"><%= currentUser.username %></span>, you can make changes to your profile here</h2>
                     <div class="separator separator-danger">✻</div>
-                    <form action="/users/update/<%= currentUser._id %>" method="POST" style="">
+                    <form action="/users/<%= currentUser._id %>?_method=PUT" method="POST" style="">
                         <div class="form-group">
-                            <svg data-jdenticon-hash="<%= currentUser.id %>"></svg>
                             <label for="search">Firstname</label>
                             <input type="text" class="form-control" placeholder="firstname" name="firstname" id="firstname" value="<%= currentUser.firstname %>">
                             <label for="search">Suranme</label>
@@ -17,10 +16,10 @@
                             <label for="search">Email</label>
                             <input type="text" class="form-control" placeholder="email" name="email" id="email" value="<%= currentUser.email %>">
                             <label for="search">Username</label>
-                            <input type="text" class="form-control" placeholder="username" name="username" id="username" value="<%= currentUser.username %>">
+                            <input type="text" disabled="disabled" class="form-control" placeholder="username" name="username" id="username" value="<%= currentUser.username %>">
                             <label for="search">Password</label>
                             <input type="password" class="form-control" placeholder="password" name="password" id="password" value="<%= currentUser.password %>">
-                            <button class="btn btn-primary btn-large button-get-started" style="display:inline-block" value="login">Save</button>
+                            <button class="btn btn-danger btn-fill btn-large button-get-started" style="display:inline-block" value="login">Save</button>
                         </div>
                     </form>
                 </div>

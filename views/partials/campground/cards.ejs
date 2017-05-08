@@ -1,0 +1,35 @@
+<h3 class="title-modern">There are <%= campgrounds.length %> campgrounds here </h3>
+<% campgrounds.forEach(function(campground){ %>
+<a href="/campgrounds/<%= campground.id %>">
+	<div class="column col-md-4 col-lg-4 col-sm-12 col">
+		<!-- Post-->
+		<div class="post-module">
+		  <!-- Post Content-->
+		  <div class="post-image" style="background-image:url('<%=campground.image%>')"></div>
+		  <div class="post-content">
+			<div class="category"><%= campground.location %></div>
+			<h3 class="title">
+				<% if (campground.name) {  %>
+					<%= (campground.name).substr(0,18) %>
+					<% if ((campground.name).length > 18) {  %>
+						<span>...</span>
+					<% } %>	
+				<% } %>	
+			</h3>
+			<h4 class="sub_title">£12 per night</h4>
+			<p class="description">
+				<% if (campground.description) {  %>
+					<%= (campground.description).substr(0,70) %>
+					<% if ((campground.description).length > 70) {  %>
+						<span>...</span>
+					<% } %>
+				<% } %>
+			</p>
+			<div class="post-meta">
+				<span class="timestamp"><i class="fa fa-clock-">o</i> 6 mins ago</span><span class="comments"><i class="fa fa-comments"></i><span> 5 comments</span>
+			</div>
+		  </div>
+		</div>
+	</div>
+</a>
+<% }) %> 

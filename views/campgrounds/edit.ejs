@@ -1,28 +1,27 @@
 <%include ../partials/header %>
 
-<div class="container">
-    <div class="row">
-        <h1 style="text-align:center">Edit Campground</h1>
-        <div style="margin:auto;width:30%;">
-            <form action="/campgrounds" method="POST">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="name" name="name" value="<%= campgrounds.name %>"/>
-                </div>
-                <div class="form-group">
-                    <input type="url" class="form-control" name="image" placeholder="img" value="<%= campgrounds.image %>"/>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" name="description" placeholder="description"><%= campgrounds.description %></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="location" placeholder="location" value="<%= campgrounds.location %>"/>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Save</button>
-                </div>
-            </form>
-            <a href="/campgrounds">Go Back</a>
-        </div>    
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="column col-lg-6 col-sm-12 col">
+                <h3 style="title-modern">Edit <%= campgrounds.name %></h3>
+                <form action="/campgrounds/<%= campgrounds._id  %>?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <label for="name">Campground Name</label>
+                        <input type="text" class="form-control" placeholder="name" name="campground[name]" value="<%= campgrounds.name %>" onchange="if (this.value){this.form.submit()}"/>
+                        <label for="img">Supply an image URL from the web</label>
+                        <input type="url" class="form-control" name="campground[image]" placeholder="img" value="<%= campgrounds.image %>" onchange="if (this.value){this.form.submit()}"/>
+                        <label for="description">Describe the campground, in as much detail as you can</label>
+                        <textarea class="form-control" name="campground[description]" placeholder="description" onchange="this.form.submit()"><%= campgrounds.description %></textarea>
+                        <label for="location">Where is it located? e.g London, UK</label>
+                        <input type="text" class="form-control" name="campground[location]" placeholder="location" value="<%= campgrounds.location %>" onchange="if (this.value){this.form.submit()}"/>
+                        <button class="btn btn-lg btn-danger btn-fill btn-block">Save</button>
+                    </div>
+                </form>
+                <a href="/campgrounds">Go Back</a>
+            </div>  
+            <%include ../partials/sidebars/editcampground.ejs %>
+        </div>
     </div>
 </div>
 

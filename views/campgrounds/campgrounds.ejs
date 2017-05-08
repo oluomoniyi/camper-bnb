@@ -1,55 +1,15 @@
 <% include ../partials/header %>
+<% include ../partials/banners/bannercampgrounds %>
 	
-<div class="section section-our-team-freebie">
-    <div class="parallax filter filter-color-black">
-        <!--div class="image" style="background-image:url('assets/img/header-2.jpeg')"-->
-        </div>
+<div class="section">
+    <div class="container">
         <div class="card-container container">
-        	<div class="content">
-				<div class="row">
-                    <div class="title-area">
-                        <h2>Your Campgrounds</h2>
-                        <div class="separator separator-danger">✻</div>
-                    </div>
-            	</div>
-            </div>
-		 <!-- Normal Demo-->
-			<% campgrounds.forEach(function(campground){ %>
-			<a href="/campgrounds/<%= campground.id %>">
-				<div class="column col-md-3 col-lg-4 col-sm-10 col">
-					<!-- Post-->
-					<div class="post-module">
-					  <!-- Post Content-->
-					  <div class="post-image">
-					 	 <img src="https://a0.muscache.com/im/pictures/35160f66-b323-4cd7-b3c5-38c977569592.jpg?aki_policy=large" alt="<%= campground.name %>" style="width:100%"/> 
-					  </div>
-					  <div class="post-content">
-						<div class="category"><%= campground.location %></div>
-						<h3 class="title">
-							<%= (campground.name).substr(0,18)%>
-							<% if ((campground.name).length > 18) {  %>
-								<span>...</span>
-							<%}%>
-						</h3>
-						<h4 class="sub_title">£12 per night</h4>
-						<p class="description">
-							<%= (campground.description).substr(0,70) %>
-								<% if ((campground.description).length > 70) {  %>
-								<span>...</span>
-							<%}%>
-						</p>
-						<div class="post-meta">
-							<span class="timestamp"><i class="fa fa-clock-">o</i> 6 mins ago</span><span class="comments"><i class="fa fa-comments"></i><span> 5 comments</span>
-						</div>
-					  </div>
-					</div>
-				</div>
-			</a>
-			<% }) %> 
-		</div>
+        	 <% include ../partials/campground/cards%>
+    	</div>
+    	<a class ="btn btn-danger btn-fill btn-large button-get-started" href="/campgrounds/new">
+    	    Add a new Cammpground
+    	 </a>
+	</div>
 </div>
-<!--    </div>-->
-<!--</div>-->
-
 
 <% include ../partials/footer %>

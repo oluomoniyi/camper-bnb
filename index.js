@@ -9,6 +9,7 @@ var express = require("express"),
         seedDB = require("./seeds"),
         User = require("./models/user"),
         UserComment = require("./models/comment"),
+        methodOverride = require("method-override"),
         //ObjectId = require('mongoose').Types.ObjectId,
         port = process.env.PORT || 3000;
         
@@ -23,6 +24,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.json() );
 app.use(bodyParser.urlencoded({extended:true}));//parse form data
 app.use(express.static(__dirname + "/public"))
+app.use(methodOverride("_method"))
 
 //seedDB();
 
