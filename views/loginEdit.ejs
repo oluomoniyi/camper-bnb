@@ -5,16 +5,10 @@
             <div class="row">
                 <%include ./partials/sidebars/userimage %>
                 <div class="column col-lg-6 col-sm-12 col">
-                    <h2 class="title-modern">Hi <span class="user-name"><%= currentUser.username %></span>, you can make changes to your profile here</h2>
+                    <h2 class="title-modern">Hi <span class="user-name"><%= currentUser.firstname %></span>, you can make password</h2>
                     <div class="separator separator-danger">✻</div>
-                    <form action="/users/<%= currentUser._id %>?_method=PUT" method="POST" style="">
+                    <form action="/users/<%= currentUser._id %>/reset_password?_method=PUT" method="POST" style="">
                         <div class="form-group">
-                            <label for="search">Firstname</label>
-                            <input type="text" class="form-control" placeholder="firstname" name="firstname" id="firstname" value="<%= currentUser.firstname %>">
-                            <label for="search">Suranme</label>
-                            <input type="text" class="form-control" placeholder="surname" name="surname" id="surname" value="<%= currentUser.surname %>">
-                            <label for="search">Email</label>
-                            <input type="text" class="form-control" placeholder="email" name="email" id="email" value="<%= currentUser.email %>">
                             <label for="search">Username</label>
                             <input type="text" disabled="disabled" class="form-control" placeholder="username" name="username" id="username" value="<%= currentUser.username %>">
                             <label for="search">Password</label>

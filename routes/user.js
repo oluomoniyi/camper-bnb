@@ -7,25 +7,60 @@ var Campground = require("../models/campground")
 var User = require("../models/user")
 
 //users routes
+router.get("/users", function(req,res){
+    res.render("userEdit")
+})
+
 router.get("/users/:id/edit", function(req,res){
+    res.render("userEdit")
+})
+
+router.get("/users/:id/reset_password", function(req,res){
     res.render("loginEdit")
 })
+
 //update
-router.put("users/:id", function(req,res){
-    var userid = req.params.id
+router.put("/users/:id", function(req,res){
     var username = req.session.passport.user
     var newPass = req.body.password
-    console.log(username, userid)
-    User.findByUsername(username).then(function(sanitizedUser){
-    if (sanitizedUser){
-        sanitizedUser.setPassword(newPass, function(){
-            sanitizedUser.save();
-            res.send('password reset successful');
-        });
-    } else {
-        res.send('user does not exist');
-    }
-    },function(err){
+    
+	User.findByIdAndUpdate(req.params.id, req.body.user, function(err, user){
+    	if (err){
+    	    console.log(err)
+    	}else {
+            console.log(user)
+            res.redirect("/users")
+    	}
+    })
+    // }, function(sanitizedUser){
+    //         if (sanitizedUser){
+    //             sanitizedUser.setPassword(newPass, function(){
+    //                 sanitizedUser.save();
+    //                 res.send('password reset successful');
+    //             });
+    //         } else {
+    //             res.send('user does not exist');
+    //         }
+    //         },function(err){
+    //             console.error(err);
+    //     }
+    
+})
+
+//password reset
+router.put("/users/:id/reset_password", function(req,res){
+    var username = req.session.passport.user
+    var newPass = req.body.password
+    User.findByUsername(username).then(function(sanitizedUser) {
+        if (sanitizedUser) {
+            sanitizedUser.setPassword(newPass, function() {
+                sanitizedUser.save();
+                res.send("password reset all good");
+            });
+        } else {
+            res.send('user does not exist');
+        }
+    }, function(err) {
         console.error(err);
     })
 })
