@@ -1,0 +1,16 @@
+<h3 class="title-modern">You have made <%= comments.length %> reviews</h3>
+<% if (comments.length > 0){ %>
+    <% comments.forEach(function(comment){ %>
+        <div class="row">
+            <div class="comment-image">
+                <img src="<%= comment.campground.image %>" alt="campgroundimage" style="width:100%;"/>
+            </div>
+            <div class="comment-content">
+                <h5 class="title-modern">Review for <%= comment.campground.name %></h5>
+                <p class="comment-text content-modern">
+                    <%= comment.text %>
+                </p>
+            </div>
+        </div>
+    <% }) %>
+<% } %>

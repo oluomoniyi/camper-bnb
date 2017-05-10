@@ -9,11 +9,13 @@ var commentSchema = mongoose.Schema({
         },
         username: String
     },
-    campgroundId : {
+    campground : {
         id :{
            type: mongoose.Schema.Types.ObjectId,
             ref: "Campground" 
-        }
+        },
+        name: String,
+        image: String
     }
 });
 

@@ -32,19 +32,6 @@ router.put("/users/:id", function(req,res){
             res.redirect("/users")
     	}
     })
-    // }, function(sanitizedUser){
-    //         if (sanitizedUser){
-    //             sanitizedUser.setPassword(newPass, function(){
-    //                 sanitizedUser.save();
-    //                 res.send('password reset successful');
-    //             });
-    //         } else {
-    //             res.send('user does not exist');
-    //         }
-    //         },function(err){
-    //             console.error(err);
-    //     }
-    
 })
 
 //password reset

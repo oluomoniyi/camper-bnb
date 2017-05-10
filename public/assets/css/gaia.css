@@ -13,6 +13,7 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
 .user-name{display: inline-block; padding-left: 5px;text-transform:capitalize;}
+.footer-code-braces{width:8px!important;}
 .search-label{
   display: inline;
   font-size:25px;
@@ -22,8 +23,15 @@
   margin:auto;
 }
 .search-form{
-  max-width: none;
+  min-width: 300px;
+  max-width: 700px!important;
+  margin: auto;
 }
+.comment-content{
+  float:right;
+  width:90%;display:inline-block
+}
+.comment-image{width:8%;min-width:50px; display:inline-block}
 .post-image{
     height: 100%;
     width: 100%;
@@ -39,12 +47,12 @@
     display: inline-block;
     outline: none;
     padding: 14px;
-    width: 80%;
+    width: 100%;
     -webkit-appearance: none;
     color:#333333;
 }
 .presentation .parallax {
-    height: 75vh!important;
+    height: 60vh!important;
 }
 .icon-black, .icon-white{
     display:none;

@@ -13,7 +13,7 @@ function isLoggedIn(req,res,next){
 //GET ROUTE
 router.get("/campgrounds", isLoggedIn, function(req,res){
     var userid = req.user._id
-    Campground.find({userid}, function(err, campgrounds){
+    Campground.find({"user.id":req.user._id}, function(err, campgrounds){
         if (err){
             console.log(err)
         }
@@ -29,13 +29,15 @@ router.post("/campgrounds", isLoggedIn, function (req,res){
     var image = req.body.image
     var description = req.body.description
     var location = req.body.location
-    var userid = req.user._id
 
 	Campground.create({
 		name,
 		image,
 		description,
-        userid,
+		price: req.body.price,
+        user : {
+            id: req.user._id
+        },
 		location
 		}, function (err, campground){
 		if (err){
@@ -69,7 +71,6 @@ router.get("/campgrounds/:id", isLoggedIn, function(req,res){
 
 //EDIT ROUTES
 router.get("/campgrounds/:id/edit", isLoggedIn, function (req,res){
-    console.log(req.user, req.params.id)
     //var userid = req.user._id
     //if (req.params.id == userid){ 
     if (1==1){

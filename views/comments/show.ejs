@@ -1,24 +1,10 @@
-<%include ../partials/header %>
-
-<% if (check === "UserComment"){ %>
-    <h1>My Reviews</h1>
-<% } else { %>
-    <h1>Camp Reviews</h1>
-<% } %>
-
-<div class="container">
-    <% if (comments.length > 0){ %>
-        <% comments.forEach(function(comment){ %>
-            <div class="row">
-                <div class="col-md-12">
-                    <span class="comment-author"><%= comment.author.username %></span>
-                    <p class="comment-text">
-                        <%= comment.text %>
-                    </p>
-                </div>
-            </div>
-        <% }) %>
-    <% } %>
+<% include ../partials/header %>
+<% include ../partials/banners/bannercomments %>
+	
+<div class="section">
+    <div class="container">
+        <% include ../partials/comments/cards %>
+    </div>
 </div>
 
 <%include ../partials/footer %>

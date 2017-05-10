@@ -28,7 +28,7 @@ router.post("/search", function (req,res){
 router.get("/search", function (req,res){
 	var query = req.query["q"]
 	if (query){//if search then search
-        Campground.find({name: new RegExp(query, 'i')}, function(err, campgrounds){
+        Campground.find({location: new RegExp(query, 'i')}, function(err, campgrounds){
             if (err){
                 console.log(err)
             }

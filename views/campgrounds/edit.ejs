@@ -8,17 +8,19 @@
                 <form action="/campgrounds/<%= campgrounds._id  %>?_method=PUT" method="POST">
                     <div class="form-group">
                         <label for="name">Campground Name</label>
-                        <input type="text" class="form-control" placeholder="name" name="campground[name]" value="<%= campgrounds.name %>" onchange="if (this.value){this.form.submit()}"/>
+                        <input type="text" class="form-control" placeholder="name" name="campground[name]" value="<%= campgrounds.name %>"/>
                         <label for="img">Supply an image URL from the web</label>
-                        <input type="url" class="form-control" name="campground[image]" placeholder="img" value="<%= campgrounds.image %>" onchange="if (this.value){this.form.submit()}"/>
+                        <input type="url" class="form-control" name="campground[image]" placeholder="img" value="<%= campgrounds.image %>"/>
                         <label for="description">Describe the campground, in as much detail as you can</label>
+                         <label for="price">Price per night</label>
+                        <input type="text" class="form-control" name="campground[price]" placeholder="price" value="<%= campgrounds.price %>"/>
                         <textarea class="form-control" name="campground[description]" placeholder="description" onchange="this.form.submit()"><%= campgrounds.description %></textarea>
                         <label for="location">Where is it located? e.g London, UK</label>
-                        <input type="text" class="form-control" name="campground[location]" placeholder="location" value="<%= campgrounds.location %>" onchange="if (this.value){this.form.submit()}"/>
+                        <input type="text" class="form-control" name="campground[location]" placeholder="location" value="<%= campgrounds.location %>" />
                         <button class="btn btn-lg btn-danger btn-fill btn-block">Save</button>
+                        <a href="/campgrounds/<%= campgrounds._id %>" class="btn btn-lg btn-block btn-primary">Go Back</a>
                     </div>
                 </form>
-                <a href="/campgrounds">Go Back</a>
             </div>  
             <%include ../partials/sidebars/editcampground.ejs %>
         </div>

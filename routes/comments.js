@@ -64,13 +64,16 @@ router.post("/campgrounds/:id/comments", isLoggedIn, function(req,res){
             UserComment.create(
             {
                 text,
-                 campgroundId : {
-                    id :campgroundId
+                 campground : {
+                    id : campground._id,
+                    name: campground.name,
+                    image: campground.image
                 },
                 author: {
                     id: req.user._id,
                     username: req.user.username
                 }
+                
             }, function(err,comment){
                 if (err){
                     console.log(err)
