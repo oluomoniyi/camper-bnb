@@ -1,28 +1,35 @@
-##YelpCamp
+#YelpCamp
 
-This project was completed as part of a Udemy course, it is a fully functional production version of the site. I made a wholehost of changes to the original material.
+This project was completed as part of a Udemy course, it is a fully functional production version of the site. I made a whole host of changes to the original material.
 
-inluding 
+#MyHacks
 
 ```
-Mae a number of wholesale changes to the UI/UX - using a modified version of the gaia template from creative-Tim
+Made a number of wholesale changes to the UI/UX - using a modified version of 
+the Gaia template from creative-Tim
+
 Added ability for users to search
-Split out views into seperate UI components
-Added a number of new links like My campgrounds, MY Reviews
-Added ability for user to edit their own user profile and change passwords
-Added ability for user to edit their own campgrounds
-Made a number Extended the user, campground models, and added a number of new routes
-Added identicon support for users avatar using jdenticon.js
-Created an actual logo with a modified version of a logo from the Noun Project
-To give the site a bit more legitmacy I scrapped data from a website offering similar to seed the data base
 
-upload images via drag and drop/or image finder
+Split out views into separate UI components
+
+Added a number of new links like My campgrounds, MY Reviews
+
+Added ability for user to edit their own user profile and change passwords
+
+Added ability for user to edit their own campgrounds
+
+Made a number Extended the user, campground models, and added a number of new routes
+
+Added identicon support for users avatar using jdenticon.js
+
+Created an actual logo with a modified version of a logo from the Noun Project
+
 
 ```
 
-I will be launching a udemy course on how I exteneded the original Yelpcamp into a fully fledged app.
+I will be launching a Udemy course on how I extended the original YelpCamp into a fully fledged app.
 
-## Code Example
+## Additional Code Examples
 
 ```
 //SEARCH POST ROUTE
