@@ -10,7 +10,7 @@ router.get("/", function (req,res){// GET ROUTE
             console.log(err)
         }
         else{
-            res.render("index", {campgrounds})
+            res.render("index", {campgrounds, query:"/"})
             //res.send({campgrounds})
         }
     })
@@ -21,6 +21,9 @@ router.post("/search", function (req,res){
       var search = req.body.search;
 	  if (search){
 		res.redirect("/search?q="+search)
+	  }
+	  else {
+	     res.redirect("/search")
 	  }
 })
 
@@ -34,6 +37,16 @@ router.get("/search", function (req,res){
             }
             else{
                 res.render("campgrounds/search", {campgrounds, query})
+            }
+        })
+    }
+    else {
+        Campground.find({}, function(err, campgrounds){
+            if (err){
+                console.log(err)
+            }
+            else{
+                res.render("campgrounds/search", {campgrounds, query: "/search"})
             }
         })
     }

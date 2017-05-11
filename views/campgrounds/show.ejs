@@ -8,16 +8,18 @@
                     <li class="list-group-item">info 2</li>
                     <li class="list-group-item">info 2</li>
                 </ul>
-                <ul class="nav nav-sidebar">
-                    <li class="list-group-item"> <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-danger btn-fill">Edit this Campground</a></li>
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li class="list-group-item"> 
-                        <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-                            <button class="btn btn-danger btn-fill">Remove this Campground</button>
-                        </form>
-                    </li>
-                </ul>
+                <% if (currentUser && campground.user.id && campground.user.id.equals(currentUser._id)) { %>
+                    <ul class="nav nav-sidebar">
+                        <li class="list-group-item"> 
+                            <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-danger btn-fill">Edit this Campground</a>
+                        </li>
+                        <li class="list-group-item"> 
+                            <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger btn-fill">Remove this Campground</button>
+                            </form>
+                        </li>
+                    </ul>
+                <% } %>
             </div>
             <div class="column col-lg-8 col-sm-12 col">
                 <div class="thumbnail" style="background-image:url('<%= campground.image %>'); height:426px; width:639px;background-size:100%"></div>

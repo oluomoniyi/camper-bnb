@@ -44,10 +44,11 @@
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Sign Up</a></li>
                 <% } else { %>
+                        <li><a href="/search">Book a Campground</a></li>
                         <li><a href="/campgrounds/new">Add a new campground</a></li>
                         <li><a href="/campgrounds/">My Campgrounds</a></li>
                         <li><a href="/comments/">My Reviews</a></li>
-                        <li><a href="/users/<%=currentUser._id%>/edit">Edit user</a></li>
+                        <li><a href="/users/<%=currentUser._id%>/edit">Your Profile</a></li>
                         <li><a href="/users/<%=currentUser._id%>/reset_password">Password Change</a></li>
                         <li><a href="/logout">Logout</a></li>
                 <% } %>

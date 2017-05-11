@@ -1,4 +1,14 @@
-<h3 class="title-modern">There are <%= campgrounds.length %> campgrounds available</h3>
+<% if (query) { %> 
+	<% if (query == "/campgrounds") { %>
+		<h3 class="title-modern">You have <%= campgrounds.length %> campground <% if (campgrounds.length > 1) {%>s<% } %> listed</h3>
+	<% } %>
+	<% if (query == "/" || query == "/search"){ %>
+		<h3 class="title-modern">There are <%= campgrounds.length %> available campgrounds</h3>
+	<% } %>
+	<% if (query != "/campgrounds" && query != "/" && query != "/search") { %>
+		<h3 class="title-modern">There are <%= campgrounds.length %> campgrounds available in <span style="text-transform:capitalize"><%= query %></span></h3>
+	<% } %>
+<% } %>
 <% campgrounds.forEach(function(campground){ %>
 <a href="/campgrounds/<%= campground.id %>">
 	<div class="column col-md-4 col-lg-4 col-sm-12 col">
@@ -48,8 +58,20 @@
 					<% } %>
 					<%= Math.floor(getRandomInt(10, 100)) %> reviews
 				</span>
+				
 			</div>
+			
 		  </div>
+		 <!-- <% if (query && query == "/campgrounds") { %>-->
+			<!--	<div style="display:block"> logic to add edit and remove buttons deprecated-->
+			<!--		<a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-danger btn-fill" style="color:#ffffff!important; padding-bottom:5px;">-->
+			<!--			Edit-->
+			<!--		</a>-->
+			<!--		<form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">-->
+	  <!--                  <button class="btn btn-danger btn-fill">Remove this Campground</button>-->
+	  <!--              </form>-->
+	  <!--         </div>-->
+			<!--<% } %>-->
 		</div>
 	</div>
 </a>
