@@ -5,12 +5,19 @@ This project was completed as part of a Udemy course, it is a fully functional p
 #MyHacks
 
 ```
+Search on the home page
+
 Made a number of wholesale changes to the UI/UX - using a modified version of 
 the Gaia template from creative-Tim
 
 Added ability for users to search
 
+added a number of new routes
+added a get comment route
+
 Split out views into separate UI components
+
+Extended the user and campground models
 
 Added a number of new links like My campgrounds, MY Reviews
 
@@ -86,8 +93,9 @@ Describe and show how to run the tests with code examples.
 ## Useful Links
 
 * [OluOmoniyi](http://www.oluomoniyi.com) - personal website
-* [Azimuth](http://www.theazimuth.co)
+* [theazimuth.co](http://www.theazimuth.co) - Company Website
 
+* [udemy](https://www.udemy.com/the-web-developer-bootcamp/) - Udemy course, cant recommend it enough to be honest!
 * [unsplash](http://www.unsplash.com) - Amazing image source
 * [jdenticon](http://www.jdenticon.com) - Generates user avatar from random seed data
 * [nounproject](http://www.nounproject.com) - Starter user logo

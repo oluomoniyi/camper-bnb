@@ -50,6 +50,32 @@ router.get("/comments", function(req, res) {
     })
 })
 
+//EDIT REVIEWS SHOW ROUTE FOR USER
+router.get("/campgrounds/:id/comments/:comment_id/edit", function(req, res) {
+    // var id = req.user._id;
+    // var ObjectId = require('mongodb').ObjectId; 
+    // var o_id = new ObjectId(id);
+    // var check = "UserComment"
+    UserComment.findById(req.params.comment_id,function(err, comment) {
+        if (err){
+            console.log(err)
+        } else{
+            res.render("comments/edit", {comment})
+        }
+    })
+})
+
+//UPDATE REVIEW
+router.put("/campgrounds/:id/comments/:comment_id", function(req, res) {
+    UserComment.findByIdAndUpdate(req.params.comment_id, req.body.text, function(err, comment) {
+        if (err){
+            console.log(err)
+            res.redirect("back")
+        } else{
+            res.redirect("campgrounds/" + req.params.id)
+        }
+    })
+})
 
 // CREATE COMMENT ROUTE
 router.post("/campgrounds/:id/comments", isLoggedIn, function(req,res){

@@ -44,12 +44,12 @@ router.post("/campgrounds", isLoggedIn, function (req,res){
 })
 
 //NEW ROUTE
-router.get("/campgrounds/new", function (req,res){ //this has to be before :id if not it will throw an error (CastError) when it tries to find with ID new
+router.get("/campgrounds/new", isLoggedIn,function (req,res){ //this has to be before :id if not it will throw an error (CastError) when it tries to find with ID new
    res.render("campgrounds/new");// template redirects user to the post route, to add new item
 })
 
 //SHOW ROUTE
-router.get("/campgrounds/:id", isLoggedIn, function(req,res){
+router.get("/campgrounds/:id", function(req,res){
     var id = req.params.id
     Campground.findById(id).populate("comments").exec(function(err, campground){
         if (err){
