@@ -52,10 +52,10 @@ app.use(campgroundsRoutes)
 app.use(commentRoutes);
 app.use(userRoutes)
 
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log(process.env.PORT, process.env.IP, "running")
-});
+// app.listen(process.env.PORT, process.env.IP, function(){
+//     console.log(process.env.PORT, process.env.IP, "running")
+// });
 
-// app.listen(3000, function () {
-//   console.log('Example app listening on port 3000!');
-// })
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+})

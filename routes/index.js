@@ -16,6 +16,15 @@ router.get("/", function (req,res){// GET ROUTE
     })
 })
 
+//users routes
+router.get("/about", function(req,res){
+    res.render("about")
+})
+
+router.get("/hacks", function(req,res){
+    res.render("hacks")
+})
+
 //SEARCH POST ROUTE
 router.post("/search", function (req,res){ 
       var search = req.body.search;

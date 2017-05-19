@@ -1,7 +1,37 @@
 <% include ../partials/header %>
+<% include ../partials/banners/bannerShowCampground %>
 <div class="section">
     <div class="container">
         <div class="row">
+            <div class="column col-lg-8 col-sm-12 col">
+                <div class="caption-full box-content">
+                    <h3 class="pull-right">£<%= campground.price %>/night</h3>
+                    <h1 class="title-modern"><%= campground.name %></h1>
+                    <p class="title-location content-modern" style="position:relative;bottom:10px"><%= campground.location %></p>
+                    <h3 class="title-about title-modern">About this Campground</h3>
+                    <hr class="row-divider">
+                    <p class="title-location content-modern"><%= campground.description %></p>
+                    <hr class="row-divider">
+                    <div class="text-right">
+                        <a href="/campgrounds/<%= campground._id %>/comments/new" class="btn btn-success btn-fill">Leave a Review</a>
+                    </div>
+                    <% campground.comments.forEach(function(comment){ %>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="comment-author"><%= comment.author.username %></span>
+                                <span class="pull-right">10 days</span>
+                                <p class="comment-text">
+                                    <%= comment.text %>
+                                </p>
+                                <a class="btn btn-danger btn-xs" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
+                                    Edit
+                                </a>
+                                <hr class="row-divider">
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>      
+            </div>
             <div class="col-lg-4 sidebar cold-md-12 col-sm-12">
                 <ul class="nav nav-sidebar">
                     <li class="list-group-item active">info 2</li>
@@ -20,31 +50,6 @@
                         </li>
                     </ul>
                 <% } %>
-            </div>
-            <div class="column col-lg-8 col-sm-12 col">
-                <div class="thumbnail" style="background-image:url('<%= campground.image %>'); height:426px; width:639px;background-size:100%"></div>
-                <div class="caption-full box-content">
-                    <h4 class="pull-right">£<%= campground.price %>/night</h4>
-                    <h4><a><%= campground.name %></a></h4>
-                    <p><%= campground.description %> </p>
-                </div>
-                <div class="text-right">
-                    <a href="/campgrounds/<%= campground._id %>/comments/new" class="btn btn-success btn-fill">Leave a Review</a>
-                </div>
-                <% campground.comments.forEach(function(comment){ %>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="comment-author"><%= comment.author.username %></span>
-                            <span class="pull-right">10 days</span>
-                            <p class="comment-text">
-                                <%= comment.text %>
-                            </p>
-                            <a class="btn btn-danger btn-xs" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
-                                Edit
-                            </a>
-                        </div>
-                    </div>
-                <% }) %>
             </div>
         </div>
     </div>
