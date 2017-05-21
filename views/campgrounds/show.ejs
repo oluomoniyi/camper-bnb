@@ -33,13 +33,13 @@
                 </div>      
             </div>
             <div class="col-lg-4 sidebar cold-md-12 col-sm-12">
-                <ul class="nav nav-sidebar">
-                    <li class="list-group-item active">info 2</li>
-                    <li class="list-group-item">info 2</li>
-                    <li class="list-group-item">info 2</li>
-                </ul>
+                <!--<ul class="nav nav-sidebar">-->
+                <!--    <li class="list-group-item active">info 2</li>-->
+                <!--    <li class="list-group-item">info 2</li>-->
+                <!--    <li class="list-group-item">info 2</li>-->
+                <!--</ul>-->
                 <% if (currentUser && campground.user.id && campground.user.id.equals(currentUser._id)) { %>
-                    <ul class="nav nav-sidebar">
+                    <ul class="nav nav-sidebar pull-right">
                         <li class="list-group-item"> 
                             <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-danger btn-fill">Edit this Campground</a>
                         </li>
@@ -47,6 +47,10 @@
                             <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
                                 <button class="btn btn-danger btn-fill">Remove this Campground</button>
                             </form>
+                        </li>
+                <% } else { %> <!--simple logic, to stop a user from booking thier own campground in production time, availablity etc will be taken into consideration-->
+                        <li class="list-group-item"> 
+                            <a href="/campgrounds/<%= campground._id %>/book" class="btn btn-danger btn-fill">Book this Campground</a>
                         </li>
                     </ul>
                 <% } %>

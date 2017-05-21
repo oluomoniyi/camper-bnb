@@ -61,6 +61,18 @@ router.get("/campgrounds/:id", function(req,res){
     })
 })
 
+//BOOK CAMPGRROUND
+router.get("/campgrounds/:id/book", function(req,res){
+    Campground.findByIdAndUpdate(req.params.id, function(err, campground){
+		if (err){
+		    console.log(err)
+		    res.redirect("/")
+		}else {
+		    res.redirect("/campgrounds/" + req.params.id)
+		}
+	})
+})
+
 
 //EDIT ROUTE
 router.get("/campgrounds/:id/edit", CheckOwnership, function (req,res){
@@ -72,7 +84,6 @@ router.get("/campgrounds/:id/edit", CheckOwnership, function (req,res){
 //UPDATE ROUTE
 router.put("/campgrounds/:id", CheckOwnership, function(req,res){
 	Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, campground){
-	    console.log("CAMPGROUND HERE",campground)
 		if (err){
 		    console.log(err)
 		    res.redirect("/")
