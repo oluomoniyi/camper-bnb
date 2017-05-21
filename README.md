@@ -82,14 +82,6 @@ Show what the library does as concisely as possible, developers should be able t
 
 This project was a built as a side project over a few weeks, to pull all the knowledge I have gained over the years in front end dev into one project.
 
-## Installation
-
-Provide code examples and explanations of how to get the project.
-
-## Tests
-
-Describe and show how to run the tests with code examples.
-
 ## Useful Links
 
 * [OluOmoniyi](http://www.oluomoniyi.com) - personal website
