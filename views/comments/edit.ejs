@@ -5,7 +5,7 @@
         <div class="row">
             <%include ../partials/sidebars/image1 %>
             <div class="column col-lg-6 col-sm-12 col">
-                <h4 style="title-modern">Edit </h4>
+                <h4 style="title-modern">Edit your comment for <%= comment.campground.name %></h4>
                 <form action="/campgrounds/<%= comment.campground.id %>/comments/<%= comment._id %>?_method=PUT" method="POST" style="padding-bottom:30px;">
                     <div class="form-group">
                         <textarea class="form-control" name="comment" row="" cols=""><%= comment.text %></textarea>

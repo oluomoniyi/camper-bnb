@@ -5,7 +5,12 @@
             <div class="row">
                 <%include ./partials/sidebars/userimage %>
                 <div class="column col-lg-6 col-sm-12 col">
-                    <h2 class="title-modern">Hi <span class="user-name"><%= currentUser.firstname %></span>, you can make password</h2>
+                    <h2 class="title-modern">
+                        <% if (currentUser.firstname) { %> 
+                            Hi <span class="user-name"><%= currentUser.firstname %>.</span> 
+                        <% } %>
+                        You can make changes to password here
+                    </h2>
                     <div class="separator separator-danger">✻</div>
                     <form action="/users/<%= currentUser._id %>/reset_password?_method=PUT" method="POST" style="">
                         <div class="form-group">
