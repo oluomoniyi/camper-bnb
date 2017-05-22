@@ -3,12 +3,12 @@
 <div class="section">
     <div class="container">
         <div class="row">
-            <%include ../partials/sidebars/image1 %>
+            <div class="col-lg-6 sidebar hidden-md hidden-sm hidden-xs" style="height:500px; background-image:url('<%= comment.campground.image%> '); background-size:contain;background-repeat:no-repeat"></div>
             <div class="column col-lg-6 col-sm-12 col">
                 <h4 style="title-modern">Edit your comment for <%= comment.campground.name %></h4>
                 <form action="/campgrounds/<%= comment.campground.id %>/comments/<%= comment._id %>?_method=PUT" method="POST" style="padding-bottom:30px;">
                     <div class="form-group">
-                        <textarea class="form-control" name="comment" row="" cols=""><%= comment.text %></textarea>
+                        <textarea class="form-control" name="text" row="" cols=""><%= comment.text %></textarea>
                         <button class="btn btn-lg btn-block btn-fill btn-danger">Save</button>
                         <a href="/campgrounds/<%= comment.campground.id %>" class="btn btn-lg btn-block btn-primary">Go Back</a>
                     </div>
