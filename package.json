@@ -1,15 +1,16 @@
 {
   "name": "trumpbnb",
   "version": "1.0.0",
-  "description": "Airbnb styled website which allows you to book trumps properties worldwide.",
+  "description": "Camping website, which lists all camping locations all over the world",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js", 
+    "start": "node index.js"
   },
   "keywords": [
-    "airbnb",
-    "trump"
+    "camping",
+    "bnb"
   ],
   "author": "Olu Omoniyi <prep@oluomoniyi.com> (http://oluomoniyi.com)",
   "license": "ISC",
