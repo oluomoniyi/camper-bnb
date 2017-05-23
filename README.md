@@ -1,4 +1,4 @@
-#YelpCamp
+#camperbnb
 
 This project was completed as part of a Udemy course, it is a fully functional production version of the site. I made a whole host of changes to the original material.
 
@@ -34,7 +34,7 @@ Created an actual logo with a modified version of a logo from the Noun Project
 
 ```
 
-I will be launching a Udemy course on how I extended the original YelpCamp into a fully fledged app.
+I will be launching a Udemy course on how I extended the original camperbnb into a fully fledged app.
 
 ## Additional Code Examples
 

@@ -19,7 +19,9 @@ var commentRoutes = require("./routes/comments"),
     userRoutes = require("./routes/user")
   
 
-mongoose.connect("mongodb://localhost/mongo")
+//mongoose.connect("mongodb://localhost/mongo")
+mongoose.connect("mongodb://abuja:DataPass24@ds021671.mlab.com:21671/camperbnb")
+
 app.set("view engine", "ejs");
 app.use(bodyParser.json() );
 app.use(bodyParser.urlencoded({extended:true}));//parse form data
@@ -52,10 +54,10 @@ app.use(campgroundsRoutes)
 app.use(commentRoutes);
 app.use(userRoutes)
 
-// app.listen(process.env.PORT, process.env.IP, function(){
-//     console.log(process.env.PORT, process.env.IP, "running")
-// });
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log(process.env.PORT, process.env.IP, "running")
+});
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-})
+// app.listen(3000, function () {
+//   console.log('Example app listening on port 3000!');
+// })

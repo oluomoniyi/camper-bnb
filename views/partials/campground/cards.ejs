@@ -3,7 +3,7 @@
 		<h3 class="title-modern">You have <%= campgrounds.length %> campground <% if (campgrounds.length > 1) {%>s<% } %> listed</h3>
 	<% } %>
 	<% if (query == "/" || query == "/search"){ %>
-		<h3 class="title-modern">There are <%= campgrounds.length %> available campgrounds</h3>
+		<h3 class="title-modern">There are <%= campgrounds.length %> campgrounds available</h3>
 	<% } %>
 	<% if (query != "/campgrounds" && query != "/" && query != "/search") { %>
 		<h3 class="title-modern">There are <%= campgrounds.length %> campgrounds available in <span style="text-transform:capitalize"><%= query %></span></h3>
