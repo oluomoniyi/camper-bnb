@@ -5,9 +5,12 @@
         <div class="row">
             <div class="column col-lg-6 col-sm-12 col">
                 <h2 class="title-modern">
-                    Hi <span class="user-name"><%= currentUser.firstname %></span>,
+                    <% if (currentUser.firstname) { %> 
+                            Hi <span class="user-name"><%= currentUser.firstname %>.</span> 
+                        <% } %>
                     <br/>Let us get you ready 
                     <br/>to start listing campgrounds.
+                    <p>Just fill out the below.</p>
                 </h2>
                 <form action="/campgrounds" method="POST">
                     <div class="form-group">
@@ -19,7 +22,7 @@
                         <input type="text" class="form-control" name="price" placeholder="price"/>
                         <label for="description">Describe the campground, in as much detail as you can</label>
                         <textarea class="form-control" name="description" placeholder="description"></textarea>
-                        <label for="location">Where is it located? e.g London, UK</label>
+                        <label for="location">Where country is it located? e.g England</label>
                         <input type="text" class="form-control" name="location" placeholder="location"/>
                         <button class="btn btn-lg btn-danger btn-block btn-fill">Add new campground</button>
                     </div>

@@ -1,11 +1,21 @@
 <% include ../partials/header %>
-<% include ../partials/banners/bannerShowCampground %>
+<!-- <% include ../partials/banners/bannerShowCampground %> --> <!-- for actual image code use banner partial, overwrote with camping images from unsplash api--> 
+<div class="section section-header presentation" style="background-image:url('https://source.unsplash.com/collection/315034/1200x500');background-size: 100% auto;background-position: center top;background-repeat: no-repeat;background-attachment: fixed;"> 
+    <div class="parallax filter-color-red"></div>
+</div>
+	
 <div class="section">
     <div class="container">
         <div class="row">
             <div class="column col-lg-8 col-sm-12 col">
                 <div class="caption-full box-content">
-                    <h3 class="pull-right">£<%= campground.price %>/night</h3>
+                    <h3 class="pull-right">
+                        <% if (campground.price > 0) {%>
+                            £<%= campground.price %> /night
+                        <% } else { %>
+                            Free Camping
+                        <% } %>
+                    </h3>
                     <h1 class="title-modern"><%= campground.name %></h1>
                     <p class="title-location content-modern" style="position:relative;bottom:10px"><%= campground.location %></p>
                     <h3 class="title-about title-modern">About this Campground</h3>
@@ -19,7 +29,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <span class="comment-author"><%= comment.author.username %></span>
-                                <span class="pull-right">10 days</span>
+                                <!--span class="pull-right">10 days</span-->
                                 <p class="comment-text">
                                     <%= comment.text %>
                                 </p>
@@ -38,22 +48,22 @@
                 <!--    <li class="list-group-item">info 2</li>-->
                 <!--    <li class="list-group-item">info 2</li>-->
                 <!--</ul>-->
-                <% if (currentUser && campground.user.id && campground.user.id.equals(currentUser._id)) { %>
-                    <ul class="nav nav-sidebar pull-right">
-                        <li class="list-group-item"> 
-                            <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-danger btn-fill">Edit this Campground</a>
-                        </li>
-                        <li class="list-group-item"> 
-                            <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-                                <button class="btn btn-danger btn-fill">Remove this Campground</button>
-                            </form>
-                        </li>
-                <% } else { %> <!--simple logic, to stop a user from booking thier own campground in production time, availablity etc will be taken into consideration-->
-                        <li class="list-group-item"> 
-                            <a href="/campgrounds/<%= campground._id %>/book" class="btn btn-danger btn-fill">Book this Campground</a>
-                        </li>
-                    </ul>
-                <% } %>
+                <ul class="nav nav-sidebar pull-right">
+                    <% if (currentUser && campground.user.id && campground.user.id.equals(currentUser._id)) { %>
+                            <li> 
+                                <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-danger btn-fill">Edit this Campground</a>
+                            </li>
+                            <li> 
+                                <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger btn-fill">Remove this Campground</button>
+                                </form>
+                            </li>
+                    <% } else { %> <!--simple logic, to stop a user from booking thier own campground in proper production, availablity etc will be taken into consideration-->
+                            <li> 
+                                <a href="/campgrounds/<%= campground._id %>/book" class="btn btn-danger btn-fill">Book this Campground</a>
+                            </li>
+                    <% } %>
+                </ul>
             </div>
         </div>
     </div>

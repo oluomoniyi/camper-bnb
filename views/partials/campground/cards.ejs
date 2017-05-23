@@ -23,12 +23,18 @@
 			<h3 class="title">
 				<% if (campground.name) {  %>
 					<%= (campground.name).substr(0,18) %>
-					<% if ((campground.name).length > 18) {  %>
+					<% if ((campground.name).length > 18) { %>
 						<span>...</span>
 					<% } %>	
 				<% } %>	
 			</h3>
-			<h4 class="sub_title">£<%= (campground.price) %> per night</h4>
+			<h4 class="sub_title">
+			<% if (campground.price > 0) {%>
+					£<%= campground.price %> /night
+				<% } else { %>
+					Free Camping
+				<% } %>
+			</h4>
 			<p class="description">
 				<% if (campground.description) {  %>
 					<%= (campground.description).substr(0,70) %>
@@ -41,16 +47,11 @@
 				<!--span class="timestamp"><i class="fa fa-clock-">o</i> 6 mins ago</span><span class="comments"><i class="fa fa-comments"></i><span> 5 reviews</span-->
 				<span class="comments">
 				<!--round ratings-->
-					<% function round(value, step) { %>
-						<%	step || (step = 1.0); %>
-						<%	var inv = 1.0 / step; %>
-						<%	return Math.round(value * inv) / inv; %>
-						<% } %>
 						<% function getRandomInt(min, max) { %>
 						<%  return Math.random() * (max - min + 1) + min; %>
 					<% } %>
 				<!--randomiser to be replaced with actual value-->
-					<% var value = getRandomInt(2.5, 4.9); %>
+					<% var value = getRandomInt(2.5, 3.9); %>
 					<% for (var i =0; i < parseInt(value); i++){%>
 						<i class="fa fa-star" aria-hidden="true" style="color:#e78b90"></i>
 					<% } %>

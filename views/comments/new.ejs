@@ -4,18 +4,15 @@
     <div class="container">
         <div class="row">
             <%include ../partials/sidebars/image1 %>
-            <div class="column col-lg-6 col-sm-12 col">
-                <h4 style="title-modern">Add new Comment to <%= campground.name %></h4>
+            <div class="column col-lg-6 col-sm-12 col">  
                 <form action="/campgrounds/<%= campground._id %>/comments" method="POST" style="padding-bottom:30px;">
                     <div class="form-group">
-                        <textarea class="form-control" name="comment" row="" cols="">
-                            
-                        </textarea>
+                        <h4 style="title-modern">Review <%= campground.name %></h4>
+                        <textarea class="form-control" name="comment" row="" cols=""></textarea>
                         <button class="btn btn-lg btn-block btn-fill btn-danger">Add New</button>
                         <a href="/campgrounds/<%= campground._id %>" class="btn btn-lg btn-block btn-primary">Go Back</a>
                     </div>
                 </form>
-                
             </div>
         </div>
     </div>

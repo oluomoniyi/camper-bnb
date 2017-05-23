@@ -15,7 +15,7 @@
                          <label for="price">Price per night</label>
                         <input type="text" class="form-control" name="campground[price]" placeholder="price" value="<%= campgrounds.price %>"/>
                         <textarea class="form-control" name="campground[description]" placeholder="description" onchange="this.form.submit()"><%= campgrounds.description %></textarea>
-                        <label for="location">Where is it located? e.g London, UK</label>
+                        <label for="location">Which country is it in? e.g England</label>
                         <input type="text" class="form-control" name="campground[location]" placeholder="location" value="<%= campgrounds.location %>" />
                         <button class="btn btn-lg btn-danger btn-fill btn-block">Save</button>
                         <a href="/campgrounds/<%= campgrounds._id %>" class="btn btn-lg btn-block btn-primary">Go Back</a>
