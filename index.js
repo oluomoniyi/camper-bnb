@@ -16,7 +16,8 @@ var express = require("express"),
 var commentRoutes = require("./routes/comments"),
     campgroundsRoutes = require("./routes/campgrounds"),
     indexRoutes = require("./routes/index"),
-    userRoutes = require("./routes/user")
+    userRoutes = require("./routes/user"),
+    api = require("./routes/api")
   
 
 //mongoose.connect("mongodb://localhost/mongo")
@@ -53,6 +54,7 @@ app.use(indexRoutes)
 app.use(campgroundsRoutes)
 app.use(commentRoutes);
 app.use(userRoutes)
+app.use(api)
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log(process.env.PORT, process.env.IP, "running")
