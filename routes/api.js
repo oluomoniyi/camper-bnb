@@ -23,7 +23,7 @@ router.get("/api/search", function (req,res){
                 console.log(err)
             }
             else{
-                res.render({campgrounds, query})
+                res.send({campgrounds, query})
             }
         })
     }
@@ -33,7 +33,7 @@ router.get("/api/search", function (req,res){
                 console.log(err)
             }
             else{
-                res.render({campgrounds})
+                res.send({campgrounds})
             }
         })
     }
