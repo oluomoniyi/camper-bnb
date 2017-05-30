@@ -33,7 +33,7 @@ router.get("/api/search", function (req,res){
                 console.log(err)
             }
             else{
-                res.render({campgrounds, query: "/search"})
+                res.render({campgrounds})
             }
         })
     }
