@@ -1,16 +1,14 @@
-#camperbnb
+#camper-bnb
 
 This project was completed as part of a Udemy course, it is a fully functional production version of the site. I made a whole host of changes to the original material.
 
 #MyHacks
 
 ```
-Search on the home page
+Added search by location on the home page
 
 Made a number of wholesale changes to the UI/UX - using a modified version of 
 the Gaia template from creative-Tim
-
-Added ability for users to search
 
 added a number of new routes
 added a get comment route
@@ -19,13 +17,9 @@ Split out views into separate UI components
 
 Extended the user and campground models
 
-Added a number of new links like My campgrounds, MY Reviews
+Added a number of routes for an authenticated user like My campgrounds, My Reviews
 
 Added ability for user to edit their own user profile and change passwords
-
-Added ability for user to edit their own campgrounds
-
-Made a number Extended the user, campground models, and added a number of new routes
 
 Added identicon support for users avatar using jdenticon.js
 
@@ -33,8 +27,6 @@ Created an actual logo with a modified version of a logo from the Noun Project
 
 
 ```
-
-I will be launching a Udemy course on how I extended the original camperbnb into a fully fledged app.
 
 ## Additional Code Examples
 
@@ -76,8 +68,6 @@ router.get("/search", function (req,res){
 })
 ```
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
-
 ## Motivation
 
 This project was a built as a side project over a few weeks, to pull all the knowledge I have gained over the years in front end dev into one project.
@@ -95,4 +85,4 @@ This project was a built as a side project over a few weeks, to pull all the kno
 
 ## License
 
-Do as you please with it, if you find it useful drop me a message (MIT, Apache, etc.)
+Do as you please with it, if you find it useful drop me a message (MIT, Apache, etc.) and please dont forget to star it.
