@@ -83,6 +83,6 @@ This project was a built as a side project over a few weeks, to pull all the kno
 * [nounproject](http://www.nounproject.com) - Starter user logo
 * [nounproject](http://www.fontawesosome.com) - font icons
 
-## License
+## License (MIT, Apache, etc.)
 
-Do as you please with it, if you find it useful drop me a message (MIT, Apache, etc.) and please dont forget to star it.
+Do as you please with it, if you find it useful then please drop me a message and/or star it.

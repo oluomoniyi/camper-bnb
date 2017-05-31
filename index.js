@@ -11,17 +11,15 @@ var express = require("express"),
         UserComment = require("./models/comment"),
         methodOverride = require("method-override"),
         //ObjectId = require('mongoose').Types.ObjectId,
-        port = process.env.PORT || 3000
-        
-var commentRoutes = require("./routes/comments"),
-    campgroundsRoutes = require("./routes/campgrounds"),
-    indexRoutes = require("./routes/index"),
-    userRoutes = require("./routes/user"),
-    api = require("./routes/api")
+        port = process.env.PORT || 3000,
+        url = process.env.DATABASEURL || "mongodb://localhost/mongo",
+        commentRoutes = require("./routes/comments"),
+        campgroundsRoutes = require("./routes/campgrounds"),
+        indexRoutes = require("./routes/index"),
+        userRoutes = require("./routes/user"),
+        api = require("./routes/api")
   
-
-//mongoose.connect("mongodb://localhost/mongo")
-mongoose.connect("mongodb://abuja:DataPass24@ds021671.mlab.com:21671/camperbnb")
+mongoose.connect(url)
 
 app.set("view engine", "ejs");
 app.use(bodyParser.json() );
@@ -33,7 +31,7 @@ app.use(methodOverride("_method"))
 
 //passport config
 app.use(Session({
-    secret: "UULUQdm2ktLsKNLhRYEz5Bff",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized:false,
 }))
@@ -77,11 +75,6 @@ app.use(function(req, res, next){
 });
 
 
-
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log(process.env.PORT, process.env.IP, "running")
 });
-
-// app.listen(3000, function () {
-//   console.log('Example app listening on port 3000!');
-// })
