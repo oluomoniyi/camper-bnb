@@ -6,21 +6,28 @@ var Session = require("express-session")
 var Campground = require("../models/campground")
 var User = require("../models/user")
 
-//users routes
-router.get("/users", function(req,res){
-    res.render("userEdit")
+// //users routes
+// router.get("/users", isLoggedIn, function(req,res){
+//     res.render("userEdit")
+// })
+
+router.get("/users/:id/edit", isLoggedIn, function(req,res){
+    User.findById(req.params.id, function (err,user) {
+        	if (err){
+    	    console.log(err)
+    	}else {
+            //console.log(user)
+            res.render("userEdit", {user})
+    	}
+    })
 })
 
-router.get("/users/:id/edit", function(req,res){
-    res.render("userEdit")
-})
-
-router.get("/users/:id/reset_password", function(req,res){
-    res.render("loginEdit")
+router.get("/users/:id/reset_password", isLoggedIn, function(req,res){
+   res.render("loginEdit")
 })
 
 //update
-router.put("/users/:id", function(req,res){
+router.put("/users/:id", isLoggedIn, function(req,res){
     var username = req.session.passport.user
     var newPass = req.body.password
     
@@ -28,14 +35,14 @@ router.put("/users/:id", function(req,res){
     	if (err){
     	    console.log(err)
     	}else {
-            console.log(user)
-            res.redirect("/users")
+            //console.log(user)
+            res.redirect("/users/" + req.params.id + "/edit")
     	}
     })
 })
 
 //password reset
-router.put("/users/:id/reset_password", function(req,res){
+router.put("/users/:id/reset_password", isLoggedIn, function(req,res){
     var username = req.session.passport.user
     var newPass = req.body.password
     User.findByUsername(username).then(function(sanitizedUser) {
@@ -74,11 +81,12 @@ router.post("/register", function(req,res){
                 res.redirect("/")
             })
         }
-    }), User.create({
-        firstname,
-        surname,
-        email
     })
+    //, User.create({
+    //     firstname,
+    //     surname,
+    //     email
+    // })
 })
 
 //show login form

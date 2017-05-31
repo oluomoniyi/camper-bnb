@@ -6,8 +6,8 @@
                 <%include ./partials/sidebars/userimage %>
                 <div class="column col-lg-6 col-sm-12 col">
                     <h2 class="title-modern">
-                        <% if (currentUser.firstname) { %> 
-                            Hi <span class="user-name"><%= currentUser.firstname %>.</span> 
+                        <% if (user.firstname) { %> 
+                            Hi <span class="user-name"><%= user.firstname %>.</span> 
                         <% } %>
                         You can make changes to your profile here
                     </h2>
@@ -15,11 +15,11 @@
                     <form action="/users/<%= currentUser._id %>?_method=PUT" method="POST" style="">
                         <div class="form-group">
                             <label for="search">Firstname</label>
-                            <input type="text" class="form-control" placeholder="firstname" name="user[firstname]" id="firstname" value="<%= currentUser.firstname %>">
+                            <input type="text" class="form-control" placeholder="firstname" name="user[firstname]" id="firstname" value="<%= user.firstname %>">
                             <label for="search">Suranme</label>
-                            <input type="text" class="form-control" placeholder="surname" name="user[surname]" id="surname" value="<%= currentUser.surname %>">
+                            <input type="text" class="form-control" placeholder="surname" name="user[surname]" id="surname" value="<%= user.surname %>">
                             <label for="search">Email</label>
-                            <input type="text" class="form-control" placeholder="email" name="user[email]" id="email" value="<%= currentUser.email %>">
+                            <input type="text" class="form-control" placeholder="email" name="user[email]" id="email" value="<%= user.email %>">
                             <button class="btn btn-danger btn-fill btn-large button-get-started" style="display:inline-block" value="login">Save</button>
                         </div>
                     </form>

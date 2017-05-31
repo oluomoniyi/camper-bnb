@@ -26,8 +26,8 @@ router.get("/campgrounds/:id/comments", function(req, res) {
         if (err){
             console.log(err)
         } else{
-            console.log(comments)
-            console.log(o_id, id)
+            //console.log(comments)
+            //console.log(o_id, id)
             res.render("comments/show", {comments, check})
         }
     })
@@ -43,8 +43,8 @@ router.get("/comments", function(req, res) {
         if (err){
             console.log(err)
         } else{
-            console.log(comments)
-            console.log(o_id, id)
+            //console.log(comments)
+            //console.log(o_id, id)
             res.render("comments/show", {comments, check})
         }
     })

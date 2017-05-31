@@ -11,7 +11,7 @@ var express = require("express"),
         UserComment = require("./models/comment"),
         methodOverride = require("method-override"),
         //ObjectId = require('mongoose').Types.ObjectId,
-        port = process.env.PORT || 3000;
+        port = process.env.PORT || 3000
         
 var commentRoutes = require("./routes/comments"),
     campgroundsRoutes = require("./routes/campgrounds"),
@@ -55,6 +55,28 @@ app.use(campgroundsRoutes)
 app.use(commentRoutes);
 app.use(userRoutes)
 app.use(api)
+
+//catch all 404 error page
+app.use(function(req, res, next){
+  res.status(404);
+
+  // respond with html page
+  if (req.accepts('html')) {
+    res.render('404', { url: req.url });
+    return;
+  }
+
+  // respond with json
+  if (req.accepts('json')) {
+    res.send({ error: 'Not found' });
+    return;
+  }
+
+  // default to plain-text. send()
+  res.type('txt').send('Not found');
+});
+
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log(process.env.PORT, process.env.IP, "running")

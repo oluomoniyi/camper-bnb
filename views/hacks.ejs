@@ -1,1 +1,104 @@
-<h1>Hacks</h1>
+<% include ./partials/header %>
+<% include ./partials/banners/banner %>
+
+<div class="section">
+    <div class="card-container container">
+	 <!-- Normal Demo-->
+	 	<h2 class="title-modern">Hacks</h2>
+	 	<article class="markdown-body entry-content" itemprop="text"><p>#camper-bnb</p>
+<p>This project was completed as part of a Udemy course, it is a fully functional production version of the site. I made a whole host of changes to the original material.</p>
+<p>#MyHacks</p>
+<pre><code>Added search by location on the home page
+
+Made a number of wholesale changes to the UI/UX - using a modified version of 
+the Gaia template from creative-Tim
+
+added a number of new routes
+added a get comment route
+
+Split out views into separate UI components
+
+Extended the user and campground models
+
+Added a number of routes for an authenticated user like My campgrounds, My Reviews
+
+Added ability for user to edit their own user profile and change passwords
+
+Added identicon support for users avatar using jdenticon.js
+
+Created an actual logo with a modified version of a logo from the Noun Project
+
+
+</code></pre>
+<h2 class="title-modern">Additional Code Examples</h2>
+<pre><code>//SEARCH POST ROUTE
+router.post("/search", function (req,res){ 
+      var search = req.body.search;
+	  if (search){
+		res.redirect("/search?q="+search)
+	  }
+	  else {
+	     res.redirect("/search")
+	  }
+})
+
+//SEARCH GET ROUTE
+router.get("/search", function (req,res){
+	var query = req.query["q"]
+	if (query){//if search then search
+        Campground.find({location: new RegExp(query, 'i')}, function(err, campgrounds){
+            if (err){
+                console.log(err)
+            }
+            else{
+                res.render("campgrounds/search", {campgrounds, query})
+            }
+        })
+    }
+    else {
+        Campground.find({}, function(err, campgrounds){
+            if (err){
+                console.log(err)
+            }
+            else{
+                res.render("campgrounds/search", {campgrounds, query: "/search"})
+            }
+        })
+    }
+})
+</code></pre>
+<h2 class="title-modern">Motivation</h2>
+<p>This project was a built as a side project over a few weeks, to pull all the knowledge I have gained over the years in front end dev into one project.</p>
+<h2 class="title-modern">Useful Links</h2>
+<ul>
+<li>
+<p><a href="http://www.oluomoniyi.com">OluOmoniyi</a> - personal website</p>
+</li>
+<li>
+<p><a href="http://www.theazimuth.co">theazimuth.co</a> - Company Website</p>
+</li>
+<li>
+<p><a href="https://www.udemy.com/the-web-developer-bootcamp/">udemy</a> - Udemy course, cant recommend it enough to be honest!</p>
+</li>
+<li>
+<p><a href="http://www.unsplash.com">unsplash</a> - Amazing image source</p>
+</li>
+<li>
+<p><a href="http://www.jdenticon.com">jdenticon</a> - Generates user avatar from random seed data</p>
+</li>
+<li>
+<p><a href="http://www.nounproject.com">nounproject</a> - Starter user logo</p>
+</li>
+<li>
+<p><a href="http://www.fontawesosome.com">nounproject</a> - font icons</p>
+</li>
+</ul>
+<h2 class="title-modern">License</h2>
+<p>Do as you please with it, if you find it useful drop me a message (MIT, Apache, etc.) and please dont forget to star it.</p>
+</article>
+	</div>
+</div>
+
+<% include ./partials/footer %>
+
+
