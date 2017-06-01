@@ -5,15 +5,17 @@ var LocalStrategy = require("passport-local")
 var Session = require("express-session")
 var Campground = require("../models/campground")
 var User = require("../models/user")
+var middleware = require("../middleware");
+var messages = require("../middleware/globalvar")
 
 // //users routes
 // router.get("/users", isLoggedIn, function(req,res){
 //     res.render("userEdit")
 // })
 
-router.get("/users/:id/edit", isLoggedIn, function(req,res){
+router.get("/users/:id/edit", middleware.isLoggedIn, function(req,res){
     User.findById(req.params.id, function (err,user) {
-        	if (err){
+        if (err){
     	    console.log(err)
     	}else {
             //console.log(user)
@@ -22,37 +24,42 @@ router.get("/users/:id/edit", isLoggedIn, function(req,res){
     })
 })
 
-router.get("/users/:id/reset_password", isLoggedIn, function(req,res){
+router.get("/users/:id/reset_password", middleware.isLoggedIn, function(req,res){
    res.render("loginEdit")
 })
 
 //update
-router.put("/users/:id", isLoggedIn, function(req,res){
+router.put("/users/:id", middleware.isLoggedIn, function(req,res){
     var username = req.session.passport.user
     var newPass = req.body.password
     
 	User.findByIdAndUpdate(req.params.id, req.body.user, function(err, user){
     	if (err){
     	    console.log(err)
+    	    req.flash("error", messages.errorFound);
+    	    req.redirect("/")
     	}else {
             //console.log(user)
+            req.flash("success", messages.userSaved);
             res.redirect("/users/" + req.params.id + "/edit")
     	}
     })
 })
 
 //password reset
-router.put("/users/:id/reset_password", isLoggedIn, function(req,res){
+router.put("/users/:id/reset_password", middleware.isLoggedIn, function(req,res){
     var username = req.session.passport.user
     var newPass = req.body.password
     User.findByUsername(username).then(function(sanitizedUser) {
         if (sanitizedUser) {
             sanitizedUser.setPassword(newPass, function() {
                 sanitizedUser.save();
-                res.send("password reset all good");
+                req.flash("success", messages.userPassUpdated);
+                res.redirect('/')
             });
-        } else {
-            res.send('user does not exist');
+        } else {//failed
+            req.flash("error", messages.userNull);
+            res.redirect('/');
         }
     }, function(err) {
         console.error(err);
@@ -75,9 +82,11 @@ router.post("/register", function(req,res){
     User.register(newUser, password, function(err, user){
         if (err){
             console.log(err);
+            req.flash("error", err);
             return res.render("register")
         } else  {
             passport.authenticate("local")(req,res, function(){
+                req.flash("success", messages.userWelcome + " " + user.username);
                 res.redirect("/")
             })
         }
@@ -103,14 +112,8 @@ router.post("/login", passport.authenticate("local",
 
 router.get("/logout", function(req,res){
     req.logout();
+    req.flash("success", messages.userLoggedOut);
     res.redirect("/")
 })
-
-function isLoggedIn(req,res,next){
-    if (req.isAuthenticated()){
-        return next()
-    }
-    res.redirect("/login")
-}
 
 module.exports = router

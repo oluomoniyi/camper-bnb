@@ -15,9 +15,9 @@
                     <form action="/users/<%= currentUser._id %>/reset_password?_method=PUT" method="POST" style="">
                         <div class="form-group">
                             <label for="search">Username</label>
-                            <input type="text" disabled="disabled" class="form-control" placeholder="username" name="username" id="username" value="<%= currentUser.username %>">
+                            <input type="text" disabled="disabled" class="form-control" placeholder="username" name="username" id="username" value="<%= currentUser.username %>" required>
                             <label for="search">Password</label>
-                            <input type="password" class="form-control" placeholder="password" name="password" id="password" value="<%= currentUser.password %>">
+                            <input type="password" class="form-control" placeholder="password" name="password" id="password" value="<%= currentUser.password %>" required>
                             <button class="btn btn-danger btn-fill btn-large button-get-started" style="display:inline-block" value="login">Save</button>
                         </div>
                     </form>

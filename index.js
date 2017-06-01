@@ -1,8 +1,10 @@
+//INITIAL
 var express = require("express"), 
         app = express(),
         bodyParser = require("body-parser"),
         request = require("request"),
         mongoose = require("mongoose"),//.set('debug', true),debugging is extremely useful in development
+        flash = require("connect-flash"),
         passport = require("passport"),
         LocalStrategy = require("passport-local"),
         Session = require("express-session"),
@@ -23,6 +25,7 @@ mongoose.connect(url)
 
 app.set("view engine", "ejs");
 app.use(bodyParser.json() );
+app.use(flash());
 app.use(bodyParser.urlencoded({extended:true}));//parse form data
 app.use(express.static(__dirname + "/public"))
 app.use(methodOverride("_method"))
@@ -31,7 +34,7 @@ app.use(methodOverride("_method"))
 
 //passport config
 app.use(Session({
-    secret: process.env.SECRET,
+    secret: 'UULUQdm2ktLsKNLhRYEz5Bff',
     resave: false,
     saveUninitialized:false,
 }))
@@ -45,6 +48,8 @@ passport.deserializeUser(User.deserializeUser())
 
 app.use(function(req,res,next){
     res.locals.currentUser = req.user
+    res.locals.error = req.flash("error")
+    res.locals.success = req.flash("success")
     next();
 })
 

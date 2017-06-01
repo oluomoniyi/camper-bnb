@@ -33,9 +33,13 @@
                                 <p class="comment-text">
                                     <%= comment.text %>
                                 </p>
-                                <a class="btn btn-danger btn-xs" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
-                                    Edit
-                                </a>
+                                <% if (currentUser) { %>
+                                    <% if (currentUser._id == comment.author._id) {%>
+                                    <a class="btn btn-danger btn-xs" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
+                                        Edit
+                                    </a>
+                                    <% } %>
+                                 <% } %>
                                 <hr class="row-divider">
                             </div>
                         </div>
@@ -61,6 +65,7 @@
                     <% } else { %> <!--simple logic, to stop a user from booking thier own campground in proper production, availablity etc will be taken into consideration-->
                             <li> 
                                 <a href="/campgrounds/<%= campground._id %>/book" class="btn btn-danger btn-fill">Book this Campground</a>
+                                 <!--<a href="#" class="btn btn-danger btn-fill">Book this Campground</a>-->
                             </li>
                     <% } %>
                 </ul>

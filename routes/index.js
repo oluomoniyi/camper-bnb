@@ -1,6 +1,8 @@
+//INDEX ROUTES
 var express = require("express")
 var router = express.Router()
 var Campground = require("../models/campground")
+
 
 //INITIAL ROUTE
 router.get("/", function (req,res){// GET ROUTE
@@ -61,12 +63,5 @@ router.get("/search", function (req,res){
     }
 })
 
-
-function isLoggedIn(req,res,next){
-    if (req.isAuthenticated()){
-        return next()
-    }
-    res.redirect("/login")
-}
 
 module.exports = router
