@@ -2,6 +2,10 @@
 	<form action="/search" method="POST" class="search-form">
 		<div class="form-group search-form">
 			<!--label for="search">Search for a Campground</label-->
+			<!--<label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">-->
+      
+   <!-- </label>-->
+    <!--i class="material-icons">search</i-->
 			<% if (query != "/campgrounds" && query != "/" && query != "/search") { %>
 				<input type="text" class="form-control search-input" placeholder="Search by Country" name="search" id="search" onfocusout="this.form.submit()" value="<%=query%>"/>
 			<% } else {%>
