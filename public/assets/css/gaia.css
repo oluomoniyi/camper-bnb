@@ -458,7 +458,7 @@ a:hover {
 }
 
 .text-danger {
-  color: #e78b90 !important;
+  color: #e74c3c !important;
 }
 
 .text-gold,
@@ -510,10 +510,10 @@ a:hover {
 }
 
 .separator-danger {
-  color: #e78b90;
+  color: #e74c3c;
 }
 .separator-danger:before, .separator-danger:after {
-  border-color: #e78b90;
+  border-color: #e74c3c;
 }
 
 p.description {
@@ -622,11 +622,11 @@ body > .navbar-collapse a {
 }
 
 .avatar-danger {
-  border-color: #e78b90;
+  border-color: #e74c3c;
 }
 
 *::selection {
-  background: #e78b90;
+  background: #e74c3c;
   color: #FFFFFF;
 }
 
@@ -842,8 +842,8 @@ a,
 
 .btn-danger,
 .navbar .navbar-nav > li > a.btn-danger {
-  border-color: #e78b90;
-  color: #e78b90;
+  border-color: #e74c3c;
+  color: #e74c3c;
 }
 .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle,
 .navbar .navbar-nav > li > a.btn-danger:hover,
@@ -860,12 +860,12 @@ a,
 .navbar .navbar-nav > li > a.btn-danger[disabled],
 .navbar .navbar-nav > li > a.btn-danger.disabled {
   background-color: transparent;
-  border-color: #e78b90;
+  border-color: #e74c3c;
 }
 .btn-danger.btn-fill,
 .navbar .navbar-nav > li > a.btn-danger.btn-fill {
   color: #FFFFFF;
-  background-color: #e78b90;
+  background-color: #e74c3c!important;/*sorry material design assinging a color*/
   opacity: 1;
   filter: alpha(opacity=100);
 }
@@ -884,7 +884,7 @@ a,
 }
 .btn-danger .caret,
 .navbar .navbar-nav > li > a.btn-danger .caret {
-  border-top-color: #e78b90;
+  border-top-color: #e74c3c;
 }
 
 .btn-black,
@@ -1125,10 +1125,10 @@ a,
   border-color: #7accb8;
 }
 .has-error .form-control {
-  color: #e78b90;
+  color: #e74c3c;
 }
 .has-error .form-control:focus {
-  border-color: #e78b90;
+  border-color: #e74c3c;
 }
 .form-control + .form-control-feedback {
   border-radius: 6px;
@@ -1150,7 +1150,7 @@ a,
 }
 
 .has-error .form-control-feedback {
-  color: #e78b90;
+  color: #e74c3c;
 }
 
 .has-success .form-control-feedback {
@@ -1167,8 +1167,8 @@ a,
   border: 1px solid #E3E3E3;
 }
 .has-error .form-control:focus + .input-group-addon {
-  border-color: #e78b90;
-  color: #e78b90;
+  border-color: #e74c3c;
+  color: #e74c3c;
 }
 .has-success .form-control:focus + .input-group-addon {
   border-color: #7accb8;
@@ -1979,7 +1979,7 @@ a,
 }
 
 .label-danger {
-  background-color: #e78b90;
+  background-color: #e74c3c;
 }
 
 .btn-social {
@@ -2121,7 +2121,7 @@ a,
   color: #7accb8;
 }
 .dropdown-menu.dropdown-danger > li > a:hover, .dropdown-menu.dropdown-danger > li > a:focus {
-  color: #e78b90;
+  color: #e74c3c;
 }
 .dropdown-menu.dropdown-warning > li > a:hover, .dropdown-menu.dropdown-warning > li > a:focus {
   color: #f88f58;
@@ -2461,7 +2461,7 @@ a,
 }
 
 .list-logos-danger .active .client-logo {
-  color: #e78b90;
+  color: #e74c3c;
 }
 
 .client-logo {
