@@ -2,19 +2,27 @@
 <% if (comments.length > 0){ %>
     <% comments.forEach(function(comment){ %>
         <div class="row">
-            <div class="comment-image">
-                <a href="/campgrounds/<%= comment.campground.id %>">
-                    <img src="<%= comment.campground.image %>" alt="campgroundimage" style="width:100%;"/>
-                </a>
-            </div>
-            <div class="comment-content">
-                <a href="/campgrounds/<%= comment.campground.id %>">
-                    <h5 class="title-modern">Review for <%= comment.campground.name %></h5>
-                </a>
-                <p class="comment-text content-modern">
-                    <%= comment.text %>
-                </p>
+            <div class="col col-lg-8">
+                <div class="comment-image">
+                    <a href="/campgrounds/<%= comment.campground.id %>">
+                        <img src="<%= comment.campground.image %>" alt="campgroundimage" style="width:100%;"/>
+                    </a>
+                </div>
+                <div class="comment-content">
+                    <a href="/campgrounds/<%= comment.campground.id %>">
+                        <h5 class="title-modern"><%= comment.campground.name %></h5>
+                    </a>
+                    <p class="comment-text content-modern">
+                        <%= comment.text %>
+                    </p>
+                </div>
             </div>
         </div>
+        <div>
+            <div class="col col-ld-8">
+                <hr class="row-divider">
+            </div>
+        </div>
+        
     <% }) %>
 <% } %>

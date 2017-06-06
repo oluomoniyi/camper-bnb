@@ -3,7 +3,6 @@ var express = require("express")
 var router = express.Router()
 var Campground = require("../models/campground")
 
-
 //INITIAL ROUTE
 router.get("/", function (req,res){// GET ROUTE
    Campground.find({}, function(err, campgrounds){
