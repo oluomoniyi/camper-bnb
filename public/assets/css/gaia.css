@@ -179,7 +179,7 @@ body {
   -ms-transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
   -o-transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
   transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
-  height:187px;
+  /*height:187px;*/
 }
 .post-module .post-content .category {
   position: absolute;
@@ -212,7 +212,7 @@ body {
   font-size: 14px;
   line-height: 1.8em;
   text-align: left;
-  /*height: 2em;*/
+  height: 2em;
 }
 .post-module .post-content .post-meta {
   margin: 30px 0 0;
