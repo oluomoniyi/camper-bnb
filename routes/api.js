@@ -27,4 +27,15 @@ router.get("/api/search", function (req,res){
     }
 })
 
+router.get("/api/searchById", function (req,res){
+    Campground.findById(req.query["id"], function(err, campgrounds){
+        if (err){
+            console.log(err)
+        }
+        else{
+            res.send({campgrounds})
+        }
+    })
+})
+
 module.exports = router
