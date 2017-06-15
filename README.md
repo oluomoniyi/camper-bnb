@@ -28,6 +28,17 @@ Created an actual logo with a modified version of a logo from the Noun Project
 
 ```
 
+# Installation
+
+- `git clone https://github.com/oluomoniyi/camper-bnb.git`
+- `cd [project folder]`
+- `npm install`
+
+
+# Running
+
+- `nodemon`
+
 ## Additional Code Examples
 
 ```
@@ -81,7 +92,7 @@ This project was a built as a side project over a few weeks, to pull all the kno
 * [unsplash](http://www.unsplash.com) - Amazing image source
 * [jdenticon](http://www.jdenticon.com) - Generates user avatar from random seed data
 * [nounproject](http://www.nounproject.com) - Starter user logo
-* [nounproject](http://www.fontawesosome.com) - font icons
+* [fontawesosome](http://www.fontawesosome.com) - font icons
 
 ## License (MIT, Apache, etc.)
 
