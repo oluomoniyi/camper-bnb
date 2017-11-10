@@ -1,8 +1,18 @@
-# camper-bnb
+# Motivation
 
-This project was completed as part of a Udemy course, it is a fully functional production version of the site. I made a whole host of changes to the original material.
+This project was a built as a side project over a few weeks, to pull all the knowledge I have gained over the years in front end dev into one project.
 
-# MyHacks
+# Installation
+
+- `git clone https://github.com/oluomoniyi/camper-bnb.git`
+- `cd [project folder]`
+- `npm install`
+
+# Running
+
+- `nodemon`
+
+# Highlights
 
 ```
 Added search by location on the home page
@@ -26,15 +36,6 @@ Added identicon support for users avatar using jdenticon.js
 Created an actual logo with a modified version of a logo from the Noun Project
 
 ```
-# Installation
-
-- `git clone https://github.com/oluomoniyi/camper-bnb.git`
-- `cd [project folder]`
-- `npm install`
-
-# Running
-
-- `nodemon`
 
 # Additional Code Examples
 
@@ -75,10 +76,6 @@ router.get("/search", function (req,res){
     }
 })
 ```
-
-# Motivation
-
-This project was a built as a side project over a few weeks, to pull all the knowledge I have gained over the years in front end dev into one project.
 
 # Useful Links
 
