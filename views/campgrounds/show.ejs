@@ -29,17 +29,16 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <span class="comment-author"><%= comment.author.username %></span>
-                                <!--span class="pull-right">10 days</span-->
                                 <p class="comment-text">
                                     <%= comment.text %>
-                                </p>
-                                <% if (currentUser) { %>
+                                </p> 
+                                <% if (currentUser ) { %>
                                     <% if (currentUser._id == comment.author._id) {%>
-                                    <a class="btn btn-danger btn-xs" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
-                                        Edit
-                                    </a>
+                                        <a class="btn btn-danger btn-xs" href="/campgrounds/<%= campground._id%>/comments/<%= comment._id %>/edit">
+                                            Edit
+                                        </a>
                                     <% } %>
-                                 <% } %>
+                                <% } %>
                                 <hr class="row-divider">
                             </div>
                         </div>
@@ -47,11 +46,6 @@
                 </div>      
             </div>
             <div class="col-lg-4 sidebar cold-md-12 col-sm-12">
-                <!--<ul class="nav nav-sidebar">-->
-                <!--    <li class="list-group-item active">info 2</li>-->
-                <!--    <li class="list-group-item">info 2</li>-->
-                <!--    <li class="list-group-item">info 2</li>-->
-                <!--</ul>-->
                 <ul class="nav nav-sidebar pull-right">
                     <% if (currentUser && campground.user.id && campground.user.id.equals(currentUser._id)) { %>
                             <li> 
@@ -65,7 +59,6 @@
                     <% } else { %> <!--simple logic, to stop a user from booking thier own campground in proper production, availablity etc will be taken into consideration-->
                             <li> 
                                 <a href="/campgrounds/<%= campground._id %>/book" class="btn btn-danger btn-fill">Book this Campground</a>
-                                 <!--<a href="#" class="btn btn-danger btn-fill">Book this Campground</a>-->
                             </li>
                     <% } %>
                 </ul>

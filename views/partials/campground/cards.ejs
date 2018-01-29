@@ -16,7 +16,6 @@
 		<div class="post-module">
 		  <!-- Post Content-->
 		  <div class="post-image" style="background-image:url('<%=campground.image%>')" data-src="%s">
-		  	<!--<img class="spinner" src="spinner.gif"/>-->
 		  </div>
 		  <div class="post-content">
 			<div class="category"><%= campground.location %></div>
@@ -44,13 +43,10 @@
 				<% } %>
 			</p>
 			<div class="post-meta">
-				<!--span class="timestamp"><i class="fa fa-clock-">o</i> 6 mins ago</span><span class="comments"><i class="fa fa-comments"></i><span> 5 reviews</span-->
 				<span class="comments">
-				<!--round ratings-->
 						<% function getRandomInt(min, max) { %>
 						<%  return Math.random() * (max - min + 1) + min; %>
 					<% } %>
-				<!--randomiser to be replaced with actual value-->
 					<% var value = getRandomInt(2.5, 3.9); %>
 					<% for (var i =0; i < parseInt(value); i++){%>
 						<i class="fa fa-star" aria-hidden="true" style="color:#e78b90"></i>
@@ -60,21 +56,9 @@
 						<i class="fa fa-star-half" aria-hidden="true" style="color:#e78b90"></i> 
 					<% } %>
 					<%= Math.floor(getRandomInt(10, 100)) %> reviews
-				</span>
-				
+				</span>	
 			</div>
-			
 		  </div>
-		 <!-- <% if (query && query == "/campgrounds") { %>-->
-			<!--	<div style="display:block"> logic to add edit and remove buttons deprecated-->
-			<!--		<a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-danger btn-fill" style="color:#ffffff!important; padding-bottom:5px;">-->
-			<!--			Edit-->
-			<!--		</a>-->
-			<!--		<form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">-->
-	  <!--                  <button class="btn btn-danger btn-fill">Remove this Campground</button>-->
-	  <!--              </form>-->
-	  <!--         </div>-->
-			<!--<% } %>-->
 		</div>
 	</div>
 </a>
